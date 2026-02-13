@@ -34,7 +34,11 @@ money_button.hide()
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
 
+<<<<<<< HEAD
 press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size= 25)
+=======
+press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25)
+>>>>>>> f9e707c2da6cc39e1c6d12fe09014c0bd7601178
 press_e_start_roulette.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
@@ -139,6 +143,7 @@ def shop_sluiten_function():
         game_over.transparency = 100
         play.stop_program
 
+<<<<<<< HEAD
 @player.when_touching(roulette)
 def interactiespel_function():
     press_e_start_roulette.show()
@@ -147,6 +152,11 @@ def interactiespel_function():
 def stopinteractiespel_function():
     press_e_start_roulette.hide()
     
+=======
+
+
+
+>>>>>>> f9e707c2da6cc39e1c6d12fe09014c0bd7601178
 @play.repeat_forever
 def doorloop_function():
     if player.x > 415:
@@ -157,5 +167,9 @@ def doorloop_function():
         player.y = -315
     if player.y < -315:
         player.y = 315
+    if player.is_touching(roulette):
+        press_e_start_roulette.show()
+    else:
+        press_e_start_roulette.hide()
 
 play.start_program()
