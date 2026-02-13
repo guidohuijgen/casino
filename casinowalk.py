@@ -34,11 +34,7 @@ money_button.hide()
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
 
-<<<<<<< HEAD
-press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size= 25)
-=======
 press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25)
->>>>>>> f9e707c2da6cc39e1c6d12fe09014c0bd7601178
 press_e_start_roulette.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
