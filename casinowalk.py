@@ -155,7 +155,7 @@ def doorloop_function():
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
-            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
+            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, font_size = 30)
             keuze = play.new_text("Kies je",color  = "white", x = -160)
             rood = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
