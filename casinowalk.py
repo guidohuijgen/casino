@@ -139,9 +139,6 @@ def shop_sluiten_function():
         game_over.transparency = 100
         play.stop_program
 
-
-
-
 @play.repeat_forever
 def doorloop_function():
     if player.x > 415:
