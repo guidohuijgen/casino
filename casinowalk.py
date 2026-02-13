@@ -1,5 +1,6 @@
 #casinowalk
 import play
+import random
 
 achtergrond = play.new_box(color = "dark red", width = 800, height = 800, transparency=0)
 
@@ -151,7 +152,21 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
+        @play.when_key_pressed("e", "E")
+        def roulette_function():
+            press_e_start_roulette.hide()
+            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
+            keuze = play.new_text("Kies je",color  = "white", x = -160)
+            rood = play.new_text("rood", color = "red")
+            of  = play.new_text("of",color = "white", x = 90)
+            black = play.new_text("zwart?", x = 220)
     else:
-        press_e_start_roulette.hide()
+        press_e_start_roulette.hide()        
+def inzet_function():
+    inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
+            
+    
+    
+
 
 play.start_program()
