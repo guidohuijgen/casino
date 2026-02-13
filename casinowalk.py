@@ -37,6 +37,9 @@ game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, trans
 press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black")
 press_e_start_roulette.hide()
 
+shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
+shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
+
 @start_box.when_clicked
 def start_function():
     start_button.hide()
@@ -101,6 +104,9 @@ def draai_function():
     def loop_naarvoren_function():
         player.angle = 0
 
+shop_text_welcome.hide()
+shopt_text_explain.hide()
+
 @shop.when_clicked
 def shop_open_function():
     achtergrond.transparency = 0
@@ -113,6 +119,8 @@ def shop_open_function():
     coin.transparency = 0
     roulette.transparency = 0
     game_over.transparency = 0
+    shop_text_welcome.show()
+    shopt_text_explain.show()
 
 @pijltje_terug.when_clicked
 def shop_sluiten_function():
@@ -125,6 +133,8 @@ def shop_sluiten_function():
     pijltje_terug.transparency = 0
     coin.transparency = 100
     roulette.transparency = 100
+    shop_text_welcome.hide()
+    shopt_text_explain.hide()
     if money <= 0:
         game_over.transparency = 100
         play.stop_program
