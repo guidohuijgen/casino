@@ -139,18 +139,9 @@ def shop_sluiten_function():
         game_over.transparency = 100
         play.stop_program
 
-# @player.when_touching(roulette)
-# def interactiespel_function():
-#     press_e_start_roulette.show()
 
-# @player.when_stopped_touching(roulette)
-# def stopinteractiespel_function():
-#     press_e_start_roulette.hide()
-    
-if player.is_touching(roulette):
-    press_e_start_roulette.show()
-else: 
-    press_e_start_roulette.hide()
+
+
 @play.repeat_forever
 def doorloop_function():
     if player.x > 415:
@@ -161,5 +152,9 @@ def doorloop_function():
         player.y = -315
     if player.y < -315:
         player.y = 315
+    if player.is_touching(roulette):
+        press_e_start_roulette.show()
+    else:
+        press_e_start_roulette.hide()
 
 play.start_program()
