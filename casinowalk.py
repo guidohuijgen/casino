@@ -133,7 +133,7 @@ def shop_sluiten_function():
 def interactiespel_function():
     press_e_start_roulette.show()
 
-@player.w(roulette)
+@player.when_stopped_touching(roulette)
 def stopinteractiespel_function():
     press_e_start_roulette.hide()
     
