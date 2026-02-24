@@ -154,11 +154,10 @@ def doorloop_function():
         press_e_start_roulette.show()
         @play.when_key_pressed("e", "E")
         def roulette_function():
-            keuze = ''
-            press_e_start_roulette.transparency = 0
+            press_e_start_roulette.hide()
             kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
-            keuze_tekst = play.new_text("Kies je",color  = "white", x = -160)
-            red = play.new_text("rood", color = "red")
+            keuze = play.new_text("Kies je",color  = "white", x = -160)
+            rood = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
             black = play.new_text("zwart?", x = 220)
             @red.when_clicked
