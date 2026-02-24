@@ -8,7 +8,7 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
-player = play.new_image("player.png", size = 30, transparency=0)
+player = play.new_image("zwerver.png", size = 30, transparency=0)
 
 shop = play.new_image("shop.png", size = 25, transparency= 0, x = 350, y = 260)
 
@@ -140,6 +140,7 @@ def shop_sluiten_function():
         game_over.transparency = 100
         play.stop_program
 
+keuze = ''
 @play.repeat_forever
 def doorloop_function():
     if player.x > 415:
@@ -152,20 +153,21 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
+
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
             kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
-            keuze = play.new_text("Kies je",color  = "white", x = -160)
+            kies = play.new_text("Kies je",color  = "white", x = -160)
             rood = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
             black = play.new_text("zwart?", x = 220)
             @red.when_clicked
             def rood_keuze_function():
-                keuze_in = 'rood'
+                keuze == 'rood'
             @black.when_clicked
             def zwart_keuze_function():
-                keuze_in = 'zwart'
+                keuze == 'zwart'
             keuzes = ['rood', 'zwart']
             resultaat = random.choice(keuzes)
             if keuze == resultaat:
