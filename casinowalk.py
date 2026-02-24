@@ -162,10 +162,10 @@ def doorloop_function():
             black = play.new_text("zwart?", x = 220)
             @red.when_clicked
             def rood_keuze_function():
-                keuze = 'rood'
+                keuze_in = 'rood'
             @black.when_clicked
             def zwart_keuze_function():
-                keuze = 'zwart'
+                keuze_in = 'zwart'
             keuzes = ['rood', 'zwart']
             resultaat = random.choice(keuzes)
             if keuze == resultaat:
@@ -173,7 +173,8 @@ def doorloop_function():
             elif keuze != resultaat:
                 loss = play.new_text("Je hebt verloren...")
     else:
-        press_e_start_roulette.hide()        
+        press_e_start_roulette.hide()   
+
 def inzet_function():
     inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
             
