@@ -154,19 +154,28 @@ def doorloop_function():
         press_e_start_roulette.show()
         @play.when_key_pressed("e", "E")
         def roulette_function():
-            press_e_start_roulette.hide()
+            keuze = ''
+            press_e_start_roulette.transparency = 0
             kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
-            keuze = play.new_text("Kies je",color  = "white", x = -160)
-            rood = play.new_text("rood", color = "red")
+            keuze_tekst = play.new_text("Kies je",color  = "white", x = -160)
+            red = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
             black = play.new_text("zwart?", x = 220)
+            @red.when_clicked
+            def rood_keuze_function():
+                keuze = 'rood'
+            @black.when_clicked
+            def zwart_keuze_function():
+                keuze = 'zwart'
+            keuzes = ['rood', 'zwart']
+            resultaat = random.choice(keuzes)
+            if keuze == resultaat:
+                win = play.new_text("Je hebt gewonnen!")
+            elif keuze != resultaat:
+                loss = play.new_text("Je hebt verloren...")
     else:
         press_e_start_roulette.hide()        
 def inzet_function():
     inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
             
-    
-    
-
-
 play.start_program()
