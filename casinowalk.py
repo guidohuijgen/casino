@@ -8,7 +8,7 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
-# coinflip = play.new_image("coinflip.png", size = 100, x = -300, y = 200, transparency= 0)
+coinflip = play.new_image("image.png", size = 70, x = -300, y = 200, transparency= 100)
 
 player = play.new_image("zwerver.png", size = 30, transparency=0)
 
@@ -62,6 +62,7 @@ def start_function():
     welcoming_text.transparency = 0
     press_start_to_start_text.transparency = 0
     roulette.transparency = 100
+    coinflip.transparency = 100
     if money <= 0:
         game_over.transparency = 100
         play.stop_program
@@ -80,6 +81,7 @@ def reset_function():
     welcoming_text.transparency = 100
     press_start_to_start_text.transparency = 100
     roulette.transparency = 0
+    coinflip.transparency = 0
     game_over.transparency = 0
     
 @play.when_key_pressed("w","up")
@@ -124,6 +126,7 @@ def shop_open_function():
     pijltje_terug.transparency = 100
     coin.transparency = 0
     roulette.transparency = 0
+    coinflip.transparency = 0
     game_over.transparency = 0
     shop_text_welcome.show()
     shopt_text_explain.show()
@@ -139,6 +142,7 @@ def shop_sluiten_function():
     pijltje_terug.transparency = 0
     coin.transparency = 100
     roulette.transparency = 100
+    coinflip.transparency = 100
     shop_text_welcome.hide()
     shopt_text_explain.hide()
     if money <= 0:
@@ -158,7 +162,6 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
-
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
@@ -179,13 +182,63 @@ def doorloop_function():
                 win = play.new_text("Je hebt gewonnen!")
             elif keuze != resultaat:
                 loss = play.new_text("Je hebt verloren...")
-    else:
-        press_e_start_roulette.hide()        
-def inzet_function():
-    inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
+            else:
+                press_e_start_roulette.hide()   
+    if player.is_touching(coinflip):
+        press_e_start_coinflip.show()
+        @play.when_key_pressed("e", "E")
+        def coinflip_function():
+            press_e_start_coinflip.hide()
+
+            kiezen_coinflip = play.new_text("Klik kop of munt om te kiezen", y=70, font_size=30)
+            kies_tekst = play.new_text("Kies je", color="white", x=-160)
+            kop = play.new_text("kop", color="red", x=-20)
+            of_tekst = play.new_text("of", color="white", x=50)
+            munt = play.new_text("munt", color="green", x=150)
+
+            @kop.when_clicked
+            def kies_kop():
+                kiezen_coinflip.hide()
+                kies_tekst.hide()
+                of_tekst.hide()
+                kop.hide()
+                munt.hide()
+                resultaat = random.choice(["kop", "munt"])
+                if resultaat == "kop":
+                    play.new_text("Je hebt gewonnen!", y=120, font_size=30)
+                else:
+                    play.new_text("Je hebt verloren...", y=120, font_size=30)
+            @munt.when_clicked
+            def kies_munt():
+                kiezen_coinflip.hide()
+                kies_tekst.hide()
+                of_tekst.hide()
+                kop.hide()
+                munt.hide()
+                resultaat = random.choice(["kop", "munt"])
+                if resultaat == "munt":
+                    play.new_text("Je hebt gewonnen!", y=120, font_size=30)
+                else:
+                    play.new_text("Je hebt verloren...", y=100, font_size=30)
+        
+
+            def inzet_function():
+                inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
+            if kop.is_clicked:
+                keuze_coinflip = 'kop'
+            elif munt.is_clicked:
+                keuze_coinflip = 'munt'
+            keuzes_coinflip = ['kop', 'munt']
+            resultaat_coinflip = random.choice(keuzes_coinflip)
+            if keuze_coinflip == resultaat_coinflip:
+                win_coinflip = play.new_text("Je hebt gewonnen!", y = 120, font_size = 30)
+            elif keuze_coinflip != resultaat_coinflip:
+                loss_coinflip = play.new_text("Je hebt verloren...", y = 120, font_size = 30)
+            else:
+                press_e_start_coinflip.hide()
+            
+
             
     
-    
-
 
 play.start_program()
