@@ -158,7 +158,6 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
-
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
