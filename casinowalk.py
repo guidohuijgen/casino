@@ -160,30 +160,15 @@ def doorloop_function():
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
-            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, font_size = 30)
+            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
             keuze = play.new_text("Kies je",color  = "white", x = -160)
             rood = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
             black = play.new_text("zwart?", x = 220)
-    if player.is_touching(coinflip):
-        press_e_start_coinflip.show()
-        @play.when_key_pressed("e", "E")
-        def coinflip_function():
-            press_e_start_coinflip.hide()
-            kiezen = play.new_text("Klik kop of munt om te kiezen", y = 70, font_size = 30)
-            keuze = play.new_text("kies je", color = "white", x = -160)
-            kop = play.new_text("kop", color = "red")
-            of = play.new_text("of", color = "white", x = 90)
-            munt = play.new_text("munt", color = "green", x = 180)
-            
     else:
         press_e_start_roulette.hide()        
-        def inzet_function():
-            inzet_text.show()
-            @play.when_key_pressed("enter")
-            def enter_function():
-                inzet_text.hide()
-
+def inzet_function():
+    inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
             
     
     
