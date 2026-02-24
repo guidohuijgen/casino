@@ -8,6 +8,8 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
+# coinflip = play.new_image("coinflip.png", size = 100, x = -300, y = 200, transparency= 0)
+
 player = play.new_image("zwerver.png", size = 30, transparency=0)
 
 shop = play.new_image("shop.png", size = 25, transparency= 0, x = 350, y = 260)
@@ -37,9 +39,12 @@ game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, trans
 
 press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25)
 press_e_start_roulette.hide()
+press_e_start_coinflip = play.new_text("Press E to start the coinflip game!", color= "black", font_size = 25)
+press_e_start_coinflip.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
 shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
+
 
 @start_box.when_clicked
 def start_function():
@@ -164,10 +169,10 @@ def doorloop_function():
             black = play.new_text("zwart?", x = 220)
             @red.when_clicked
             def rood_keuze_function():
-                keuze == 'rood'
+                keuze_in = 'rood'
             @black.when_clicked
             def zwart_keuze_function():
-                keuze == 'zwart'
+                keuze_in = 'zwart'
             keuzes = ['rood', 'zwart']
             resultaat = random.choice(keuzes)
             if keuze == resultaat:
@@ -175,9 +180,12 @@ def doorloop_function():
             elif keuze != resultaat:
                 loss = play.new_text("Je hebt verloren...")
     else:
-        press_e_start_roulette.hide()   
-
+        press_e_start_roulette.hide()        
 def inzet_function():
     inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
             
+    
+    
+
+
 play.start_program()
