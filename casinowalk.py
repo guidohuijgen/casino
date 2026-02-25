@@ -83,7 +83,6 @@ upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75
 upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112)
 upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
 
-
 kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, transparency=0)
 kies = play.new_text("Kies je",color  = "white", x = -160, transparency=0)
 rood = play.new_text("rood", color = "red", transparency=0)
@@ -318,12 +317,61 @@ def doorloop_function():
                 of_tekst.transparency = 0
                 kop.transparency = 0
                 munt.transparency = 0
-             
-        
-
             # def inzet_function():
           
-    press_e_start_coinflip.hide()
+    else:
+        press_f_start_coinflip.hide()
+        win.hide()
+        loss.hide()
         
+@upgrade_1.when_clicked
+def buy_upgrade1():
+    global gekocht_1
+    if not gekocht_1:
+        koop_character(20, "zwerverboi.png")
+        gekocht_1 = True
+    else:
+        player.image = "zwerverboi.png"
+
+
+@upgrade_2.when_clicked
+def buy_upgrade2():
+    global gekocht_2
+    if not gekocht_2:
+        koop_character(80, "niet meer straatarm.png")
+        gekocht_2 = True
+    else:
+        player.image = "niet meer straatarm.png"
+
+
+@upgrade_3.when_clicked
+def buy_upgrade3():
+    global gekocht_3
+    if not gekocht_3:
+        koop_character(150, "soort van rijk.png")
+        gekocht_3 = True
+    else:
+        player.image = "soort van rijk.png"
+
+
+@upgrade_4.when_clicked
+def buy_upgrade4():
+    global gekocht_4
+    if not gekocht_4:
+        koop_character(250, "best rijk.png")
+        gekocht_4 = True
+    else:
+        player.image = "best rijk.png"
+      
+def koop_character(prijs, nieuwe_skin):
+    global money
+    if money >= prijs:
+        money -= prijs
+        money_button.text = f"{money}"
+        player.image = nieuwe_skin
+        if money <= 0:
+            game_over.transparency = 100
+    else:
+        play.new_text("Niet genoeg geld!", y=150, font_size=30)
 
 play.start_program()
