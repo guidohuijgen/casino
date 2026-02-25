@@ -39,8 +39,8 @@ game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, trans
 
 press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25)
 press_e_start_roulette.hide()
-press_e_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25)
-press_e_start_coinflip.hide()
+press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25)
+press_f_start_coinflip.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
 shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
@@ -84,10 +84,23 @@ upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -11
 upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
 
 
-keuze_roul = ''
-win = play.new_text("Je hebt gewonnen!")
-win.hide()
+kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, transparency=0)
+kies = play.new_text("Kies je",color  = "white", x = -160, transparency=0)
+rood = play.new_text("rood", color = "red", transparency=0)
+of  = play.new_text("of",color = "white", x = 90, transparency=0)
+black = play.new_text("zwart?", x = 220, transparency=0)
 
+kiezen_coinflip = play.new_text("Klik kop of munt om te kiezen", y=70, font_size=30, transparency= 0)
+kies_tekst = play.new_text("Kies je", color="white", x=-160, transparency=0)
+kop = play.new_text("kop", color="red", x=-20, transparency= 0)
+of_tekst = play.new_text("of", color="white", x=50, transparency=0)
+munt = play.new_text("munt", color="green", x=150, transparency=0)
+
+winst = 0
+keuze_roul = ''
+win = play.new_text(f"Je {winst} hebt gewonnen!")
+win.hide()
+keuze_coin = ''
 loss = play.new_text("Je hebt verloren...")
 loss.hide()
 
@@ -238,119 +251,79 @@ def doorloop_function():
         press_e_start_roulette.show()
         @play.when_key_pressed("e", "E")
         def roulette_function():
-            press_e_start_roulette.hide()                
-            kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
-            kies = play.new_text("Kies je",color  = "white", x = -160)
-            rood = play.new_text("rood", color = "red")
-            of  = play.new_text("of",color = "white", x = 90)
-            black = play.new_text("zwart?", x = 220)
+            global keuze_roul
+            press_e_start_roulette.hide() 
+            rood.transparency =100
+            black.transparency = 100
+            of.transparency = 100
+            kiezen.transparency = 100
+            kies.transparency = 100           
             @rood.when_clicked
             def rood_keuze_function():
                 keuze_roul = 'rood'
             @black.when_clicked
             def zwart_keuze_function():
                 keuze_roul = 'zwart'
-            keuzes = ['rood', 'zwart']
-            resultaat = random.choice(keuzes)
-            if keuze_roul == resultaat:
+            keuzes_roul = ['rood', 'zwart']
+            resultaat_roul = random.choice(keuzes_roul)
+            if keuze_roul == resultaat_roul:
                 win.show()
-            elif keuze_roul != resultaat:
+                rood.transparency = 0
+                of.transparency = 0
+                black.transparency = 0
+                kies.transparency = 0 
+                kiezen.transparency = 0
+            elif keuze_roul != resultaat_roul:
                 loss.show()
+                rood.transparency = 0
+                of.transparency = 0
+                black.transparency = 0
+                kies.transparency = 0 
+                kiezen.transparency = 0
             else:
                 press_e_start_roulette.hide()  
     else:
         press_e_start_roulette.hide()
+        win.hide()
+        loss.hide()
              
     if player.is_touching(coinflip):
-        press_e_start_coinflip.show()
+        press_f_start_coinflip.show()
         @play.when_key_pressed("f", "F")
         def coinflip_function():
-            kiezen_coinflip = play.new_text("Klik kop of munt om te kiezen", y=70, font_size=30)
-            kies_tekst = play.new_text("Kies je", color="white", x=-160)
-            kop = play.new_text("kop", color="red", x=-20)
-            of_tekst = play.new_text("of", color="white", x=50)
-            munt = play.new_text("munt", color="green", x=150)
-
+            global keuze_coin
+            kiezen_coinflip.transparency= 100 
+            kies_tekst.transparency = 100
+            kop.transparency =100
+            of_tekst.transparency =100
+            munt.transparency = 100
             @kop.when_clicked
             def kies_kop():
-                kiezen_coinflip.hide()
-                kies_tekst.hide()
-                of_tekst.hide()
-                kop.hide()
-                munt.hide()
-                resultaat = random.choice(["kop", "munt"])
-                if resultaat == "kop":
-                    play.new_text("Je hebt gewonnen!", y=120, font_size=30)
-                else:
-                    play.new_text("Je hebt verloren...", y=120, font_size=30)
+                keuze_coin = 'kop'
             @munt.when_clicked
             def kies_munt():
-                kiezen_coinflip.hide()
-                kies_tekst.hide()
-                of_tekst.hide()
-                kop.hide()
-                munt.hide()
-                resultaat = random.choice(["kop", "munt"])
-                if resultaat == "munt":
-                    play.new_text("Je hebt gewonnen!", y=120, font_size=30)
-                else:
-                    play.new_text("Je hebt verloren...", y=100, font_size=30)
+                keuze_coin = 'munt'
+            resultaat_coin = random.choice(['kop', 'munt'])
+            if keuze_coin == resultaat_coin:
+                win.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0
+                munt.transparency = 0
+            else:
+                loss.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0
+                munt.transparency = 0
+             
         
 
             # def inzet_function():
           
     press_e_start_coinflip.hide()
-#test
-@upgrade_1.when_clicked
-def buy_upgrade1():
-    global gekocht_1
-    if not gekocht_1:
-        koop_character(20, "zwerverboi.png")
-        gekocht_1 = True
-    else:
-        player.image = "zwerverboi.png"
-
-
-@upgrade_2.when_clicked
-def buy_upgrade2():
-    global gekocht_2
-    if not gekocht_2:
-        koop_character(80, "niet meer straatarm.png")
-        gekocht_2 = True
-    else:
-        player.image = "niet meer straatarm.png"
-
-
-@upgrade_3.when_clicked
-def buy_upgrade3():
-    global gekocht_3
-    if not gekocht_3:
-        koop_character(150, "soort van rijk.png")
-        gekocht_3 = True
-    else:
-        player.image = "soort van rijk.png"
-
-
-@upgrade_4.when_clicked
-def buy_upgrade4():
-    global gekocht_4
-    if not gekocht_4:
-        koop_character(250, "best rijk.png")
-        gekocht_4 = True
-    else:
-        player.image = "best rijk.png"
-#test        
-def koop_character(prijs, nieuwe_skin):
-    global money
-    if money >= prijs:
-        money -= prijs
-        money_button.text = f"{money}"
-        player.image = nieuwe_skin
-        if money <= 0:
-            game_over.transparency = 100
-    else:
-        play.new_text("Niet genoeg geld!", y=150, font_size=30)
-
-
+        
 
 play.start_program()
