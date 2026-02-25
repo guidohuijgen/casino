@@ -8,7 +8,7 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
-coinflip = play.new_image("image.png", size = 70, x = -300, y = 200, transparency= 100)
+coinflip = play.new_image("image.png", size = 60, x = -300, y = 200, transparency= 0)
 
 player = play.new_image("zwerver.png", size = 30, transparency=0)
 
@@ -44,7 +44,15 @@ press_e_start_coinflip.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
 shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
+shop_text_welcome.hide()
+shopt_text_explain.hide()
 
+keuze_roul = ''
+win = play.new_text("Je hebt gewonnen!")
+win.hide()
+
+loss = play.new_text("Je hebt verloren...")
+loss.hide()
 
 @start_box.when_clicked
 def start_function():
@@ -112,9 +120,6 @@ def draai_function():
     def loop_naarvoren_function():
         player.angle = 0
 
-shop_text_welcome.hide()
-shopt_text_explain.hide()
-
 @shop.when_clicked
 def shop_open_function():
     achtergrond.transparency = 0
@@ -149,7 +154,6 @@ def shop_sluiten_function():
         game_over.transparency = 100
         play.stop_program
 
-keuze = ''
 @play.repeat_forever
 def doorloop_function():
     if player.x > 415:
@@ -162,30 +166,31 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
-    else:
-        press_e_start_roulette.hide()
         @play.when_key_pressed("e", "E")
         def roulette_function():
-            press_e_start_roulette.hide()
+            press_e_start_roulette.hide()                
             kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70)
             kies = play.new_text("Kies je",color  = "white", x = -160)
             rood = play.new_text("rood", color = "red")
             of  = play.new_text("of",color = "white", x = 90)
             black = play.new_text("zwart?", x = 220)
-            @red.when_clicked
+            @rood.when_clicked
             def rood_keuze_function():
-                keuze_in = 'rood'
+                keuze_roul = 'rood'
             @black.when_clicked
             def zwart_keuze_function():
-                keuze_in = 'zwart'
+                keuze_roul = 'zwart'
             keuzes = ['rood', 'zwart']
             resultaat = random.choice(keuzes)
-            if keuze == resultaat:
-                win = play.new_text("Je hebt gewonnen!")
-            elif keuze != resultaat:
-                loss = play.new_text("Je hebt verloren...")
+            if keuze_roul == resultaat:
+                win.show()
+            elif keuze_roul != resultaat:
+                loss.show()
             else:
-                press_e_start_roulette.hide()   
+                press_e_start_roulette.hide()  
+    else:
+        press_e_start_roulette.hide()
+             
     if player.is_touching(coinflip):
         press_e_start_coinflip.show()
     else:
