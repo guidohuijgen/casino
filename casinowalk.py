@@ -47,19 +47,42 @@ shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up
 shop_text_welcome.hide()
 shopt_text_explain.hide()
 
-shop_text_geld_upgrade1 = play.new_text("20", color = "black", font_size= 20 , y = -25, x = -225)
+shop_text_geld_upgrade1 = play.new_text("€20,-", color = "black", font_size= 20 , y = -25, x = -225)
 shop_text_geld_upgrade1.hide()
-shop_text_geld_upgrade2 = play.new_text("80", color = "black", font_size = 20, y = -25, x = -75)
+shop_text_geld_upgrade2 = play.new_text("€80,-", color = "black", font_size = 20, y = -25, x = -75)
 shop_text_geld_upgrade2.hide()
-shop_text_geld_upgrade3 = play.new_text("150", color = "black", font_size = 20, y = -25, x = 75)
+shop_text_geld_upgrade3 = play.new_text("€150,-", color = "black", font_size = 20, y = -25, x = 75)
 shop_text_geld_upgrade3.hide()
-shop_text_geld_upgrade4 = play.new_text("250", color = "black", font_size = 20, y = -25, x = 225)
+shop_text_geld_upgrade4 = play.new_text("€250,-", color = "black", font_size = 20, y = -25, x = 225)
 shop_text_geld_upgrade4.hide()
+shop_text_geld_upgrade5 = play.new_text("€400,-", color = "black", font_size = 20, y = -175, x = -225)
+shop_text_geld_upgrade5.hide()
+shop_text_geld_upgrade6 = play.new_text("€650,-", color = "black", font_size = 20, y = -175, x = -75)
+shop_text_geld_upgrade6.hide()
+shop_text_geld_upgrade7 = play.new_text("€1000,-", color = "black", font_size = 20, y = -175, x = 75)
+shop_text_geld_upgrade7.hide()
+shop_text_geld_upgrade8 = play.new_text("€2000,-", color = "black", font_size = 20, y = -175, x = 225)
+shop_text_geld_upgrade8.hide()
+
+#test
+gekocht_1 = False
+gekocht_2 = False
+gekocht_3 = False
+gekocht_4 = False
+gekocht_5 = False
+gekocht_6 = False
+gekocht_7 = False
+gekocht_8 = False
 
 upgrade_1 = play.new_image("zwerverboi.png", size = 32, transparency = 0, x = -225, y = 30)
 upgrade_2 = play.new_image("niet meer straatarm.png", size = 10, transparency = 0, x = -75, y = 30)
 upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x = 75, y = 30)
 upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
+upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -120)
+upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -120)
+upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112)
+upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
+
 
 keuze_roul = ''
 win = play.new_text("Je hebt gewonnen!")
@@ -144,6 +167,14 @@ def shop_open_function():
     shop_text_geld_upgrade3.show()
     upgrade_4.transparency = 100
     shop_text_geld_upgrade4.show()
+    upgrade_5.transparency = 100
+    shop_text_geld_upgrade5.show()
+    upgrade_6.transparency = 100
+    shop_text_geld_upgrade6.show()
+    upgrade_7.transparency = 100
+    shop_text_geld_upgrade7.show()
+    upgrade_8.transparency = 100
+    shop_text_geld_upgrade8.show()
     achtergrond.transparency = 0
     player.transparency = 0
     reset_button.transparency = 0
@@ -173,14 +204,22 @@ def shop_sluiten_function():
     coinflip.transparency = 100
     shop_text_welcome.hide()
     shopt_text_explain.hide()
-    upgrade_1.transparency = 0
     shop_text_geld_upgrade1.hide()
     shop_text_geld_upgrade2.hide()
     shop_text_geld_upgrade3.hide()
     shop_text_geld_upgrade4.hide()
+    shop_text_geld_upgrade5.hide()
+    shop_text_geld_upgrade6.hide()
+    shop_text_geld_upgrade7.hide()
+    shop_text_geld_upgrade8.hide()
+    upgrade_1.transparency = 0
     upgrade_2.transparency = 0
     upgrade_3.transparency = 0
     upgrade_4.transparency = 0
+    upgrade_5.transparency = 0
+    upgrade_6.transparency = 0
+    upgrade_7.transparency = 0
+    upgrade_8.transparency = 0
     if money <= 0:
         game_over.transparency = 100
         play.stop_program
@@ -261,6 +300,57 @@ def doorloop_function():
             # def inzet_function():
           
     press_e_start_coinflip.hide()
-        
+#test
+@upgrade_1.when_clicked
+def buy_upgrade1():
+    global gekocht_1
+    if not gekocht_1:
+        koop_character(20, "zwerverboi.png")
+        gekocht_1 = True
+    else:
+        player.image = "zwerverboi.png"
+
+
+@upgrade_2.when_clicked
+def buy_upgrade2():
+    global gekocht_2
+    if not gekocht_2:
+        koop_character(80, "niet meer straatarm.png")
+        gekocht_2 = True
+    else:
+        player.image = "niet meer straatarm.png"
+
+
+@upgrade_3.when_clicked
+def buy_upgrade3():
+    global gekocht_3
+    if not gekocht_3:
+        koop_character(150, "soort van rijk.png")
+        gekocht_3 = True
+    else:
+        player.image = "soort van rijk.png"
+
+
+@upgrade_4.when_clicked
+def buy_upgrade4():
+    global gekocht_4
+    if not gekocht_4:
+        koop_character(250, "best rijk.png")
+        gekocht_4 = True
+    else:
+        player.image = "best rijk.png"
+#test        
+def koop_character(prijs, nieuwe_skin):
+    global money
+    if money >= prijs:
+        money -= prijs
+        money_button.text = f"{money}"
+        player.image = nieuwe_skin
+        if money <= 0:
+            game_over.transparency = 100
+    else:
+        play.new_text("Niet genoeg geld!", y=150, font_size=30)
+
+
 
 play.start_program()
