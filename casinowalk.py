@@ -197,8 +197,6 @@ def doorloop_function():
         press_e_start_coinflip.hide()
         @play.when_key_pressed("e", "E")
         def coinflip_function():
-
-
             kiezen_coinflip = play.new_text("Klik kop of munt om te kiezen", y=70, font_size=30)
             kies_tekst = play.new_text("Kies je", color="white", x=-160)
             kop = play.new_text("kop", color="red", x=-20)
@@ -233,18 +231,18 @@ def doorloop_function():
 
             def inzet_function():
                 inzet_text = play.new_text("Hoe veel geld wilt u inzetten?")
-            if kop.is_clicked:
-                keuze_coinflip = 'kop'
-            elif munt.is_clicked:
-                keuze_coinflip = 'munt'
-            keuzes_coinflip = ['kop', 'munt']
-            resultaat_coinflip = random.choice(keuzes_coinflip)
-            if keuze_coinflip == resultaat_coinflip:
-                win_coinflip = play.new_text("Je hebt gewonnen!", y = 120, font_size = 30)
-            elif keuze_coinflip != resultaat_coinflip:
-                loss_coinflip = play.new_text("Je hebt verloren...", y = 120, font_size = 30)
-            else:
-                press_e_start_coinflip.hide()
+            # if kop.is_clicked:
+            #     keuze_coinflip = 'kop'
+            # elif munt.is_clicked:
+            #     keuze_coinflip = 'munt'
+            # keuzes_coinflip = ['kop', 'munt']
+            # resultaat_coinflip = random.choice(keuzes_coinflip)
+            # if keuze_coinflip == resultaat_coinflip:
+            #     win_coinflip = play.new_text("Je hebt gewonnen!", y = 120, font_size = 30)
+            # elif keuze_coinflip != resultaat_coinflip:
+            #     loss_coinflip = play.new_text("Je hebt verloren...", y = 120, font_size = 30)
+
+    press_e_start_coinflip.hide()
         
 
 play.start_program()
