@@ -31,7 +31,7 @@ press_start_to_start_text = play.new_text('Press start to start the game',size =
 reset_button = play.new_text('RESET',color = 'black', font_size = 20, x = 270, y = 270)
 reset_button.hide()
 
-money = 3000
+money = 20
 money_button = play.new_text (f'{money} ', color = 'black', font_size = 25, x = 270, y = 240)
 money_button.hide() 
 
@@ -262,27 +262,29 @@ def doorloop_function():
             @rood.when_clicked
             def rood_keuze_function():
                 keuze_roul = 'rood'
+                resultaat_roul_function()
             @black.when_clicked
             def zwart_keuze_function():
                 keuze_roul = 'zwart'
-            keuzes_roul = ['rood', 'zwart']
-            resultaat_roul = random.choice(keuzes_roul)
-            if keuze_roul == resultaat_roul:
-                win.show()
-                rood.transparency = 0
-                of.transparency = 0
-                black.transparency = 0
-                kies.transparency = 0 
-                kiezen.transparency = 0
-            elif keuze_roul != resultaat_roul:
-                loss.show()
-                rood.transparency = 0
-                of.transparency = 0
-                black.transparency = 0
-                kies.transparency = 0 
-                kiezen.transparency = 0
-            else:
-                press_e_start_roulette.hide()  
+                resultaat_roul_function()
+            def resultaat_roul_function():
+                resultaat_roul = random.choice(['rood','zwart'])
+                if keuze_roul == resultaat_roul:
+                    win.show()
+                    rood.transparency = 0
+                    of.transparency = 0
+                    black.transparency = 0
+                    kies.transparency = 0 
+                    kiezen.transparency = 0
+                elif keuze_roul != resultaat_roul:
+                    loss.show()
+                    rood.transparency = 0
+                    of.transparency = 0
+                    black.transparency = 0
+                    kies.transparency = 0 
+                    kiezen.transparency = 0
+                else:
+                    press_e_start_roulette.hide()  
     else:
         press_e_start_roulette.hide()
         win.hide()
