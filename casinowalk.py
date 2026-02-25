@@ -96,10 +96,10 @@ of_tekst = play.new_text("of", color="white", x=50, transparency=0)
 munt = play.new_text("munt", color="green", x=150, transparency=0)
 
 winst = 0
-keuze_roul = ''
+keuze_roul = 0
 win = play.new_text(f"Je {winst} hebt gewonnen!")
 win.hide()
-keuze_coin = ''
+keuze_coin = 0
 loss = play.new_text("Je hebt verloren...")
 loss.hide()
 
@@ -250,6 +250,8 @@ def doorloop_function():
         press_e_start_roulette.show()
         @play.when_key_pressed("e", "E")
         def roulette_function():
+            if not player.is_touching(roulette):
+                return
             global keuze_roul
             press_e_start_roulette.hide() 
             rood.transparency =100
@@ -291,6 +293,7 @@ def doorloop_function():
         @play.when_key_pressed("f", "F")
         def coinflip_function():
             global keuze_coin
+            press_f_start_coinflip.hide()
             kiezen_coinflip.transparency= 100 
             kies_tekst.transparency = 100
             kop.transparency =100
@@ -299,24 +302,27 @@ def doorloop_function():
             @kop.when_clicked
             def kies_kop():
                 keuze_coin = 'kop'
+                resultaat_function()
             @munt.when_clicked
             def kies_munt():
                 keuze_coin = 'munt'
-            resultaat_coin = random.choice(['kop', 'munt'])
-            if keuze_coin == resultaat_coin:
-                win.show()
-                kiezen_coinflip.transparency = 0
-                kies_tekst.transparency = 0
-                of_tekst.transparency = 0
-                kop.transparency = 0
-                munt.transparency = 0
-            else:
-                loss.show()
-                kiezen_coinflip.transparency = 0
-                kies_tekst.transparency = 0
-                of_tekst.transparency = 0
-                kop.transparency = 0
-                munt.transparency = 0
+                resultaat_function()
+            def resultaat_function():
+                resultaat_coin = random.choice(['kop', 'munt'])
+                if keuze_coin == resultaat_coin:
+                    win.show()
+                    kiezen_coinflip.transparency = 0
+                    kies_tekst.transparency = 0
+                    of_tekst.transparency = 0
+                    kop.transparency = 0
+                    munt.transparency = 0
+                else:
+                    loss.show()
+                    kiezen_coinflip.transparency = 0
+                    kies_tekst.transparency = 0
+                    of_tekst.transparency = 0
+                    kop.transparency = 0
+                    munt.transparency = 0
             # def inzet_function():
           
     else:
@@ -343,7 +349,6 @@ def buy_upgrade2():
     else:
         player.image = "niet meer straatarm.png"
 
-
 @upgrade_3.when_clicked
 def buy_upgrade3():
     global gekocht_3
@@ -352,7 +357,6 @@ def buy_upgrade3():
         gekocht_3 = True
     else:
         player.image = "soort van rijk.png"
-
 
 @upgrade_4.when_clicked
 def buy_upgrade4():
