@@ -31,7 +31,7 @@ press_start_to_start_text = play.new_text('Press start to start the game',size =
 reset_button = play.new_text('RESET',color = 'black', font_size = 20, x = 270, y = 270)
 reset_button.hide()
 
-money = 20
+money = 3000
 money_button = play.new_text (f'{money} ', color = 'black', font_size = 25, x = 270, y = 240)
 money_button.hide() 
 
@@ -80,8 +80,8 @@ upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x 
 upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
 upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -120)
 upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -120)
-upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112)
-upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
+upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112, angle = 180)
+upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98, angle = 180)
 
 kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, transparency=0)
 kies = play.new_text("Kies je",color  = "white", x = -160, transparency=0)
@@ -363,6 +363,43 @@ def buy_upgrade4():
     else:
         player.image = "best rijk.png"
       
+@upgrade_5.when_clicked
+def buy_upgrade5():
+    global gekocht_5
+    if not gekocht_5:
+        koop_character(450, "koning5.png")
+        gekocht_5 = True
+    else:
+        player.image = "koning5.png"
+
+@upgrade_6.when_clicked
+def buy_upgrade6():
+    global gekocht_6
+    if not gekocht_6:
+        koop_character(650, "koning zes.png")
+        gekocht_6 = True
+    else:
+        player.image = "koning zes.png"
+
+@upgrade_7.when_clicked
+def buy_upgrade7():
+    global gekocht_7
+    if not gekocht_7:
+        koop_character(1000, "7.png")
+        gekocht_7 = True
+    else:
+        player.image = "7.png"
+        player.angle = 180
+@upgrade_8.when_clicked
+def buy_upgrade8():
+    global gekocht_8
+    if not gekocht_8:
+        koop_character(2000, "8.png")
+        gekocht_8 = True
+    else:
+        player.image = "8.png"
+        player.angle = 180
+
 def koop_character(prijs, nieuwe_skin):
     global money
     if money >= prijs:
