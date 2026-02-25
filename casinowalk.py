@@ -162,6 +162,8 @@ def doorloop_function():
         player.y = 315
     if player.is_touching(roulette):
         press_e_start_roulette.show()
+    else:
+        press_e_start_roulette.hide()
         @play.when_key_pressed("e", "E")
         def roulette_function():
             press_e_start_roulette.hide()
@@ -186,9 +188,11 @@ def doorloop_function():
                 press_e_start_roulette.hide()   
     if player.is_touching(coinflip):
         press_e_start_coinflip.show()
+    else:
+        press_e_start_coinflip.hide()
         @play.when_key_pressed("e", "E")
         def coinflip_function():
-            press_e_start_coinflip.hide()
+
 
             kiezen_coinflip = play.new_text("Klik kop of munt om te kiezen", y=70, font_size=30)
             kies_tekst = play.new_text("Kies je", color="white", x=-160)
