@@ -47,6 +47,20 @@ shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up
 shop_text_welcome.hide()
 shopt_text_explain.hide()
 
+shop_text_geld_upgrade1 = play.new_text("20", color = "black", font_size= 20 , y = -25, x = -225)
+shop_text_geld_upgrade1.hide()
+shop_text_geld_upgrade2 = play.new_text("80", color = "black", font_size = 20, y = -25, x = -75)
+shop_text_geld_upgrade2.hide()
+shop_text_geld_upgrade3 = play.new_text("150", color = "black", font_size = 20, y = -25, x = 75)
+shop_text_geld_upgrade3.hide()
+shop_text_geld_upgrade4 = play.new_text("250", color = "black", font_size = 20, y = -25, x = 225)
+shop_text_geld_upgrade4.hide()
+
+upgrade_1 = play.new_image("zwerverboi.png", size = 32, transparency = 0, x = -225, y = 30)
+upgrade_2 = play.new_image("niet meer straatarm.png", size = 10, transparency = 0, x = -75, y = 30)
+upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x = 75, y = 30)
+upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
+
 keuze_roul = ''
 win = play.new_text("Je hebt gewonnen!")
 win.hide()
@@ -122,6 +136,14 @@ def draai_function():
 
 @shop.when_clicked
 def shop_open_function():
+    upgrade_1.transparency = 100
+    shop_text_geld_upgrade1.show()
+    upgrade_2.transparency = 100
+    shop_text_geld_upgrade2.show()
+    upgrade_3.transparency = 100
+    shop_text_geld_upgrade3.show()
+    upgrade_4.transparency = 100
+    shop_text_geld_upgrade4.show()
     achtergrond.transparency = 0
     player.transparency = 0
     reset_button.transparency = 0
@@ -135,6 +157,7 @@ def shop_open_function():
     game_over.transparency = 0
     shop_text_welcome.show()
     shopt_text_explain.show()
+
 
 @pijltje_terug.when_clicked
 def shop_sluiten_function():
@@ -150,6 +173,14 @@ def shop_sluiten_function():
     coinflip.transparency = 100
     shop_text_welcome.hide()
     shopt_text_explain.hide()
+    upgrade_1.transparency = 0
+    shop_text_geld_upgrade1.hide()
+    shop_text_geld_upgrade2.hide()
+    shop_text_geld_upgrade3.hide()
+    shop_text_geld_upgrade4.hide()
+    upgrade_2.transparency = 0
+    upgrade_3.transparency = 0
+    upgrade_4.transparency = 0
     if money <= 0:
         game_over.transparency = 100
         play.stop_program
