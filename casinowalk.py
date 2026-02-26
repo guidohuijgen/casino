@@ -283,7 +283,6 @@ def doorloop_function():
                     def reset_na_uitslag():
                         global in_game
                         win.hide()
-                        loss.hide()
                         in_game = False
                         doorgaan.hide()
                 elif keuze_roul != resultaat_roul:
@@ -297,7 +296,6 @@ def doorloop_function():
                     @doorgaan.when_clicked
                     def reset_na_uitslag():
                         global in_game
-                        win.hide()
                         loss.hide()
                         in_game = False
                         doorgaan.hide()
@@ -337,10 +335,10 @@ def doorloop_function():
                     def reset_na_uitslag():
                         global in_game
                         win.hide()
-                        loss.hide()
                         in_game = False
                         doorgaan.hide()
                 elif keuze_coin != resultaat_coin:
+                    loss.show()
                     kiezen_coinflip.transparency = 0
                     kies_tekst.transparency = 0
                     of_tekst.transparency = 0
@@ -350,7 +348,6 @@ def doorloop_function():
                     @doorgaan.when_clicked
                     def reset_na_uitslag():
                         global in_game
-                        win.hide()
                         loss.hide()
                         in_game = False
                         doorgaan.hide()
