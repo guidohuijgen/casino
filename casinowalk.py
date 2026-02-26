@@ -31,15 +31,15 @@ press_start_to_start_text = play.new_text('Press start to start the game',size =
 reset_button = play.new_text('RESET',color = 'black', font_size = 20, x = 270, y = 270)
 reset_button.hide()
 
-money = 3000
+money = 20
 money_button = play.new_text (f'{money} ', color = 'black', font_size = 25, x = 270, y = 240)
 money_button.hide() 
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
 
-press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25)
+press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25, y = -100)
 press_e_start_roulette.hide()
-press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25)
+press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25, y = -100)
 press_f_start_coinflip.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
@@ -80,8 +80,8 @@ upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x 
 upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
 upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -120)
 upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -120)
-upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112, angle = 180)
-upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98, angle = 180)
+upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112)
+upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
 
 kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, transparency=0)
 kies = play.new_text("Kies je",color  = "white", x = -160, transparency=0)
@@ -96,10 +96,10 @@ of_tekst = play.new_text("of", color="white", x=50, transparency=0)
 munt = play.new_text("munt", color="green", x=150, transparency=0)
 
 winst = 0
-keuze_roul = 0
+keuze_roul = ''
 win = play.new_text(f"Je {winst} hebt gewonnen!")
 win.hide()
-keuze_coin = 0
+keuze_coin = ''
 loss = play.new_text("Je hebt verloren...")
 loss.hide()
 
@@ -190,11 +190,11 @@ def shop_open_function():
     achtergrond.transparency = 0
     player.transparency = 0
     reset_button.transparency = 0
-    money_button.transparency = 0
+    money_button.transparency = 100
     shop.transparency = 0
     shop_achtergrond.transparency = 100
     pijltje_terug.transparency = 100
-    coin.transparency = 0
+    coin.transparency = 100
     roulette.transparency = 0
     coinflip.transparency = 0
     game_over.transparency = 0
@@ -250,8 +250,6 @@ def doorloop_function():
         press_e_start_roulette.show()
         @play.when_key_pressed("e", "E")
         def roulette_function():
-            if not player.is_touching(roulette):
-                return
             global keuze_roul
             press_e_start_roulette.hide() 
             rood.transparency =100
@@ -293,7 +291,6 @@ def doorloop_function():
         @play.when_key_pressed("f", "F")
         def coinflip_function():
             global keuze_coin
-            press_f_start_coinflip.hide()
             kiezen_coinflip.transparency= 100 
             kies_tekst.transparency = 100
             kop.transparency =100
@@ -302,27 +299,24 @@ def doorloop_function():
             @kop.when_clicked
             def kies_kop():
                 keuze_coin = 'kop'
-                resultaat_function()
             @munt.when_clicked
             def kies_munt():
                 keuze_coin = 'munt'
-                resultaat_function()
-            def resultaat_function():
-                resultaat_coin = random.choice(['kop', 'munt'])
-                if keuze_coin == resultaat_coin:
-                    win.show()
-                    kiezen_coinflip.transparency = 0
-                    kies_tekst.transparency = 0
-                    of_tekst.transparency = 0
-                    kop.transparency = 0
-                    munt.transparency = 0
-                else:
-                    loss.show()
-                    kiezen_coinflip.transparency = 0
-                    kies_tekst.transparency = 0
-                    of_tekst.transparency = 0
-                    kop.transparency = 0
-                    munt.transparency = 0
+            resultaat_coin = random.choice(['kop', 'munt'])
+            if keuze_coin == resultaat_coin:
+                win.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0
+                munt.transparency = 0
+            else:
+                loss.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0
+                munt.transparency = 0
             # def inzet_function():
           
     else:
@@ -330,89 +324,5 @@ def doorloop_function():
         win.hide()
         loss.hide()
         
-@upgrade_1.when_clicked
-def buy_upgrade1():
-    global gekocht_1
-    if not gekocht_1:
-        koop_character(20, "zwerverboi.png")
-        gekocht_1 = True
-    else:
-        player.image = "zwerverboi.png"
-
-
-@upgrade_2.when_clicked
-def buy_upgrade2():
-    global gekocht_2
-    if not gekocht_2:
-        koop_character(80, "niet meer straatarm.png")
-        gekocht_2 = True
-    else:
-        player.image = "niet meer straatarm.png"
-
-@upgrade_3.when_clicked
-def buy_upgrade3():
-    global gekocht_3
-    if not gekocht_3:
-        koop_character(150, "soort van rijk.png")
-        gekocht_3 = True
-    else:
-        player.image = "soort van rijk.png"
-
-@upgrade_4.when_clicked
-def buy_upgrade4():
-    global gekocht_4
-    if not gekocht_4:
-        koop_character(250, "best rijk.png")
-        gekocht_4 = True
-    else:
-        player.image = "best rijk.png"
-      
-@upgrade_5.when_clicked
-def buy_upgrade5():
-    global gekocht_5
-    if not gekocht_5:
-        koop_character(450, "koning5.png")
-        gekocht_5 = True
-    else:
-        player.image = "koning5.png"
-
-@upgrade_6.when_clicked
-def buy_upgrade6():
-    global gekocht_6
-    if not gekocht_6:
-        koop_character(650, "koning zes.png")
-        gekocht_6 = True
-    else:
-        player.image = "koning zes.png"
-
-@upgrade_7.when_clicked
-def buy_upgrade7():
-    global gekocht_7
-    if not gekocht_7:
-        koop_character(1000, "7.png")
-        gekocht_7 = True
-    else:
-        player.image = "7.png"
-        player.angle = 180
-@upgrade_8.when_clicked
-def buy_upgrade8():
-    global gekocht_8
-    if not gekocht_8:
-        koop_character(2000, "8.png")
-        gekocht_8 = True
-    else:
-        player.image = "8.png"
-        player.angle = 180
-
-def koop_character(prijs, nieuwe_skin):
-    global money
-    if money >= prijs:
-        money -= prijs
-        money_button.text = f"{money}"
-        player.image = nieuwe_skin
-        if money <= 0:
-            game_over.transparency = 100
-    else:
-        play.new_text("Niet genoeg geld!", y=150, font_size=30)
 
 play.start_program()
