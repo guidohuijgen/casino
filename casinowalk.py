@@ -6,6 +6,9 @@ achtergrond = play.new_box(color = "dark red", width = 800, height = 800, transp
 
 beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
+slot_machine = play.new_image("gamble-slot-machine-in-pixel-art-style-vector-removebg-preview.png",size = 80, x = 260, y = 170, transparency=0 )
+slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 170, x = 260, transparency=0 )
+
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
 coinflip = play.new_image("image.png", size = 60, x = -300, y = 200, transparency= 0)
@@ -43,6 +46,8 @@ press_e_start_roulette = play.new_text("Press E to start the roulette game!", co
 press_e_start_roulette.hide()
 press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25, y = -100)
 press_f_start_coinflip.hide()
+press_g_start_slotmachine = play.new_text("Press G to start  the slot machine game!", color = 'black', font_size = 25, y = 100)
+press_g_start_slotmachine.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
 shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
@@ -124,6 +129,7 @@ def start_function():
     shop.transparency = 100
     player.transparency = 100
     coin.transparency = 100
+    slot_machine.transparency = 100
     player.y = 0
     player.x = 0
     welcoming_text.transparency = 0
@@ -138,6 +144,7 @@ def reset_function():
     reset_button.hide()
     money_button.transparency = 0
     beginscherm.transparency = 100
+    slot_machine.transparency=0
     achtergrond.transparency = 0
     shop.transparency = 0
     player.transparency = 0
@@ -196,6 +203,7 @@ def shop_open_function():
     shop_text_geld_upgrade8.show()
     achtergrond.transparency = 0
     player.transparency = 0
+    slot_machine.transparency = 0
     reset_button.transparency = 0
     money_button.transparency = 100
     shop.transparency = 0
@@ -221,6 +229,7 @@ def shop_sluiten_function():
     coin.transparency = 100
     roulette.transparency = 100
     coinflip.transparency = 100
+    slot_machine.transparency= 100
     shop_text_welcome.hide()
     shopt_text_explain.hide()
     shop_text_geld_upgrade1.hide()
@@ -285,7 +294,7 @@ def doorloop_function():
                         win.hide()
                         in_game = False
                         doorgaan.hide()
-                elif keuze_roul != resultaat_roul:
+                else:
                     loss.show()
                     rood.transparency = 0
                     of.transparency = 0
@@ -337,7 +346,7 @@ def doorloop_function():
                         win.hide()
                         in_game = False
                         doorgaan.hide()
-                elif keuze_coin != resultaat_coin:
+                else:
                     loss.show()
                     kiezen_coinflip.transparency = 0
                     kies_tekst.transparency = 0
@@ -356,6 +365,16 @@ def doorloop_function():
           
     else:
         press_f_start_coinflip.hide()
+    if player.is_touching(slot_machine):
+        press_g_start_slotmachine.show()
+        @play.when_key_pressed('g', 'G')
+        def slot_machine_function():
+            global in_game
+            in_game = True
+            slot_machine.transparency=0
+            slot_machine_game.transparency = 100
+
+
 
 if upgrade_1.transparency == 100:      
     @upgrade_1.when_clicked
