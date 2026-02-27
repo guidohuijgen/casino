@@ -474,19 +474,28 @@ def doorloop_function():
             in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
-            def slot_combo_function():
-                global uitslag
-                keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
+            slot_combo_function()
+
+def slot_combo_function():
+                keuzen = ["kers", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
+                keuzen_naar_image  = {"kers": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
+                for i in keuzen_naar_image.values():
+                    i.transparency = 0
                 slot_1 = random.choice(keuzen)
+                slot_1_foto = keuzen_naar_image[slot_1]
                 slot_2 = random.choice(keuzen)
+                slot_2_foto = keuzen_naar_image[slot_2]
                 slot_3 = random.choice(keuzen)
-                uitslag.text =f"{slot_1 }  {slot_2 }{slot_3 }"
-                uitslag.transparency = 100
-
-
-
-
-
+                slot_3_foto = keuzen_naar_image[slot_3]
+                slot_1_foto.x = 223
+                slot_2_foto.x= 260
+                slot_3_foto.x = 297
+                slot_1_foto.y =145
+                slot_2_foto.y = 145
+                slot_3_foto.y = 145
+                slot_1_foto.transparency = 100
+                slot_2_foto.transparency =100
+                slot_3_foto.transparency = 100
 
 # def kers_voor_slot_symbool_function(uitslag):
 #     if "kers" is in uitslag:
