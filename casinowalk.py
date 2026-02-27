@@ -9,7 +9,22 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 slot_machine = play.new_image("slotmachinebegin.png",size = 80, x = 260, y = 150, transparency=0 )
 slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 148, x = 260, transparency=0 )
 
+appel_slot= play.new_image("appel.png", size = 30, transparency= 0)
+bar_white= play.new_box(color = 'white', width = 30, height = 20)
+bar_slot = play.new_image("bar.png", size = 30, transparency= 0)
+bar_white.y = bar_slot.y
+bar_white.x = bar_slot.x
+bar_white.transparency = bar_slot.transparency
+bel_slot = play.new_image("bel.png", size  =30, transparency= 0 )
+druif_slot  = play.new_image("druif.png", size = 30, transparency=0)
+hart_slot = play.new_image("hart.png", size = 30,transparency=0)
+kers_slot = play.new_image("kers.png", size = 30, transparency=0 )
+limoen_slot = play.new_image("peer.png", size = 30, transparency=0)
+zeven_slot = play.new_image("slot7.png",size = 30, transparency=0) 
+
 roulette = play.new_image("roulette plaatje.png", size  = 80, x = -300, y = -200, transparency= 0)
+press_e_start_roulette = play.new_text("Press E to enter the roulette", color = "black", font_size = 25, x = 0, y = 0,)
+press_e_start_roulette.hide()
 
 coinflip = play.new_image("image.png", size = 60, x = -300, y = 200, transparency= 0)
 
@@ -42,8 +57,6 @@ money_button = play.new_text (f'{money} ', color = 'black', font_size = 25, x = 
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
 
-press_e_start_roulette = play.new_text("Press E to start the roulette game!", color= "black", font_size = 25, y = -100)
-press_e_start_roulette.hide()
 press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25, y = -100)
 press_f_start_coinflip.hide()
 press_g_start_slotmachine = play.new_text("Press G to start the slot machine game!",color = 'black', font_size = 25, y= -100)
@@ -72,54 +85,47 @@ shop_text_geld_upgrade8 = play.new_text("€2000,-", color = "black", font_size 
 shop_text_geld_upgrade8.hide()
 
 
-roulette_0 = play.new_text("0", x=-300, y=-200, transparency=0, color="green", font_size=30)
+roulette_0 = play.new_text("0", x=-300, y=-50, transparency=0, color="green", font_size=30)
 
-roulette_1 = play.new_text("1", x=-265, y=-200, transparency=0, color="red", font_size=30)
-roulette_2 = play.new_text("2", x=-230, y=-200, transparency=0, color="black", font_size=30)
-roulette_3 = play.new_text("3", x=-195, y=-200, transparency=0, color="red", font_size=30)
-roulette_4 = play.new_text("4", x=-160, y=-200, transparency=0, color="black", font_size=30)
-roulette_5 = play.new_text("5", x=-125, y=-200, transparency=0, color="red", font_size=30)
-roulette_6 = play.new_text("6", x=-90, y=-200, transparency=0, color="black", font_size=30)
-roulette_7 = play.new_text("7", x=-55, y=-200, transparency=0, color="red", font_size=30)
-roulette_8 = play.new_text("8", x=-20, y=-200, transparency=0, color="black", font_size=30)
-roulette_9 = play.new_text("9", x=15, y=-200, transparency=0, color="red", font_size=30)
-roulette_10 = play.new_text("10", x=50, y=-200, transparency=0, color="black", font_size=30)
-roulette_11 = play.new_text("11", x=85, y=-200, transparency=0, color="red", font_size=30)
-roulette_12 = play.new_text("12", x=120, y=-200, transparency=0, color="black", font_size=30)
-roulette_13 = play.new_text("13", x=155, y=-200, transparency=0, color="red", font_size=30)
-roulette_14 = play.new_text("14", x=190, y=-200, transparency=0, color="black", font_size=30)
-roulette_15 = play.new_text("15", x=225, y=-200, transparency=0, color="red", font_size=30)
-roulette_16 = play.new_text("16", x=260, y=-200, transparency=0, color="black", font_size=30)
-roulette_17 = play.new_text("17", x=295, y=-200, transparency=0, color="red", font_size=30)
-roulette_18 = play.new_text("18", x=330, y=-200, transparency=0, color="black", font_size=30)
+roulette_1 = play.new_text("1", x=-265, y=-50, transparency=0, color="red", font_size=30)
+roulette_2 = play.new_text("2", x=-230, y=-50, transparency=0, color="black", font_size=30)
+roulette_3 = play.new_text("3", x=-195, y=-50, transparency=0, color="red", font_size=30)
+roulette_4 = play.new_text("4", x=-160, y=-50, transparency=0, color="black", font_size=30)
+roulette_5 = play.new_text("5", x=-125, y=-50, transparency=0, color="red", font_size=30)
+roulette_6 = play.new_text("6", x=-90, y=-50, transparency=0, color="black", font_size=30)
+roulette_7 = play.new_text("7", x=-55, y=-50, transparency=0, color="red", font_size=30)
+roulette_8 = play.new_text("8", x=-20, y=-50, transparency=0, color="black", font_size=30)
+roulette_9 = play.new_text("9", x=15, y=-50, transparency=0, color="red", font_size=30)
+roulette_10 = play.new_text("10", x=50, y=-50, transparency=0, color="black", font_size=30)
+roulette_11 = play.new_text("11", x=85, y=-50, transparency=0, color="red", font_size=30)
+roulette_12 = play.new_text("12", x=120, y=-50, transparency=0, color="black", font_size=30)
+roulette_13 = play.new_text("13", x=155, y=-50, transparency=0, color="red", font_size=30)
+roulette_14 = play.new_text("14", x=190, y=-50, transparency=0, color="black", font_size=30)
+roulette_15 = play.new_text("15", x=225, y=-50, transparency=0, color="red", font_size=30)
+roulette_16 = play.new_text("16", x=260, y=-50, transparency=0, color="black", font_size=30)
+roulette_17 = play.new_text("17", x=295, y=-50, transparency=0, color="red", font_size=30)
+roulette_18 = play.new_text("18", x=330, y=-50, transparency=0, color="black", font_size=30)
 
-roulette_19 = play.new_text("19", x=-300, y=-160, transparency=0, color="red", font_size=30)
-roulette_20 = play.new_text("20", x=-265, y=-160, transparency=0, color="black", font_size=30)
-roulette_21 = play.new_text("21", x=-230, y=-160, transparency=0, color="red", font_size=30)
-roulette_22 = play.new_text("22", x=-195, y=-160, transparency=0, color="black", font_size=30)
-roulette_23 = play.new_text("23", x=-160, y=-160, transparency=0, color="red", font_size=30)
-roulette_24 = play.new_text("24", x=-125, y=-160, transparency=0, color="black", font_size=30)
-roulette_25 = play.new_text("25", x=-90, y=-160, transparency=0, color="red", font_size=30)
-roulette_26 = play.new_text("26", x=-55, y=-160, transparency=0, color="black", font_size=30)
-roulette_27 = play.new_text("27", x=-20, y=-160, transparency=0, color="red", font_size=30)
-roulette_28 = play.new_text("28", x=15, y=-160, transparency=0, color="black", font_size=30)
-roulette_29 = play.new_text("29", x=50, y=-160, transparency=0, color="red", font_size=30)
-roulette_30 = play.new_text("30", x=85, y=-160, transparency=0, color="black", font_size=30)
-roulette_31 = play.new_text("31", x=120, y=-160, transparency=0, color="red", font_size=30)
-roulette_32 = play.new_text("32", x=155, y=-160, transparency=0, color="black", font_size=30)
-roulette_33 = play.new_text("33", x=190, y=-160, transparency=0, color="red", font_size=30)
-roulette_34 = play.new_text("34", x=225, y=-160, transparency=0, color="black", font_size=30)
-roulette_35 = play.new_text("35", x=260, y=-160, transparency=0, color="red", font_size=30)
-roulette_36 = play.new_text("36", x=295, y=-160, transparency=0, color="black", font_size=30)
-alle_roulette_nummers = [
-    roulette_0, roulette_1, roulette_2, roulette_3, roulette_4,
-    roulette_5, roulette_6, roulette_7, roulette_8, roulette_9,
-    roulette_10, roulette_11, roulette_12, roulette_13, roulette_14,
-    roulette_15, roulette_16, roulette_17, roulette_18, roulette_19,
-    roulette_20, roulette_21, roulette_22, roulette_23, roulette_24,
-    roulette_25, roulette_26, roulette_27, roulette_28, roulette_29,
-    roulette_30, roulette_31, roulette_32, roulette_33, roulette_34,
-    roulette_35, roulette_36]
+roulette_19 = play.new_text("19", x=-300, y=-100, transparency=0, color="red", font_size=30)
+roulette_20 = play.new_text("20", x=-265, y=-100, transparency=0, color="black", font_size=30)
+roulette_21 = play.new_text("21", x=-230, y=-100, transparency=0, color="red", font_size=30)
+roulette_22 = play.new_text("22", x=-195, y=-100, transparency=0, color="black", font_size=30)
+roulette_23 = play.new_text("23", x=-160, y=-100, transparency=0, color="red", font_size=30)
+roulette_24 = play.new_text("24", x=-125, y=-100, transparency=0, color="black", font_size=30)
+roulette_25 = play.new_text("25", x=-90, y=-100, transparency=0, color="red", font_size=30)
+roulette_26 = play.new_text("26", x=-55, y=-100, transparency=0, color="black", font_size=30)
+roulette_27 = play.new_text("27", x=-20, y=-100, transparency=0, color="red", font_size=30)
+roulette_28 = play.new_text("28", x=15, y=-100, transparency=0, color="black", font_size=30)
+roulette_29 = play.new_text("29", x=50, y=-100, transparency=0, color="red", font_size=30)
+roulette_30 = play.new_text("30", x=85, y=-100, transparency=0, color="black", font_size=30)
+roulette_31 = play.new_text("31", x=120, y=-100, transparency=0, color="red", font_size=30)
+roulette_32 = play.new_text("32", x=155, y=-100, transparency=0, color="black", font_size=30)
+roulette_33 = play.new_text("33", x=190, y=-100, transparency=0, color="red", font_size=30)
+roulette_34 = play.new_text("34", x=225, y=-100, transparency=0, color="black", font_size=30)
+roulette_35 = play.new_text("35", x=260, y=-100, transparency=0, color="red", font_size=30)
+roulette_36 = play.new_text("36", x=295, y=-100, transparency=0, color="black", font_size=30)
+
+
 
 gekocht_1 = False
 gekocht_2 = False
@@ -137,10 +143,10 @@ upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x 
 upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
 upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -120)
 upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -120)
-upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112)
-upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98)
+upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112, angle = 180)
+upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98, angle = 180)
 
-kiezen = play.new_text("Klik rood of zwart om te kiezen", y = 70, transparency=0)
+kiezen = play.new_text("Klik rood of zwart om te kiezen of kies een nummer", y = 70, transparency=0, font_size = 30)
 kies = play.new_text("Kies je",color  = "white", x = -160, transparency=0)
 rood = play.new_text("rood", color = "red", transparency=0)
 of  = play.new_text("of",color = "white", x = 90, transparency=0)
@@ -312,120 +318,157 @@ def doorloop_function():
         player.y = 315
 
 
-if player.is_touching(roulette):
-    @play.when_key_pressed("e", "E")
-    def roulette_function():
-        global in_game
-        in_game = True
-        rood.transparency =100
-        black.transparency = 100
-        of.transparency = 100
-        kiezen.transparency = 100
-        kies.transparency = 100  
-        roulette_0.show()
-    
-        @rood.when_clicked
-        def rood_keuze_function():
-            resultaat_roul_function('rood')
-        @black.when_clicked
-        def zwart_keuze_function():
-            resultaat_roul_function('zwart')
-        def resultaat_roul_function(keuze_roul):
-            resultaat_roul = random.choice(['rood','zwart'])
-            if keuze_roul == resultaat_roul:
-                win.show()
-                rood.transparency = 0
-                of.transparency = 0
-                black.transparency = 0
-                kies.transparency = 0 
-                kiezen.transparency = 0
-                doorgaan.show()
-                def reset_na_uitslag():
-                    global in_game
-                    win.hide()
-                    in_game = False
-                    doorgaan.hide()
-            else:
-                loss.show()
-                rood.transparency = 0
-                of.transparency = 0
-                black.transparency = 0
-                kies.transparency = 0 
-                kiezen.transparency = 0
-                doorgaan.show()
-                @doorgaan.when_clicked
-                def reset_na_uitslag():
-                    global in_game
-                    loss.hide()
-                    in_game = False
-                    doorgaan.hide()
+    if player.is_touching(roulette):
+        press_e_start_roulette.show()
+        @play.when_key_pressed("e", "E")
+        def roulette_function():
+            press_e_start_roulette.hide()
+            global in_game
+            in_game = True
+            rood.transparency =100
+            black.transparency = 100
+            of.transparency = 100
+            kiezen.transparency = 100
+            kies.transparency = 100  
+            roulette_0.transparency = 100
+            roulette_1.transparency = 100
+            roulette_2.transparency = 100
+            roulette_3.transparency = 100
+            roulette_4.transparency = 100
+            roulette_5.transparency = 100
+            roulette_6.transparency = 100
+            roulette_7.transparency = 100
+            roulette_8.transparency = 100
+            roulette_9.transparency = 100
+            roulette_10.transparency = 100
+            roulette_11.transparency = 100
+            roulette_12.transparency = 100
+            roulette_13.transparency = 100
+            roulette_14.transparency = 100
+            roulette_15.transparency = 100
+            roulette_16.transparency = 100
+            roulette_17.transparency = 100
+            roulette_18.transparency = 100
+            roulette_19.transparency = 100
+            roulette_20.transparency = 100
+            roulette_21.transparency = 100
+            roulette_22.transparency = 100
+            roulette_23.transparency = 100
+            roulette_24.transparency = 100
+            roulette_25.transparency = 100
+            roulette_26.transparency = 100
+            roulette_27.transparency = 100
+            roulette_28.transparency = 100
+            roulette_29.transparency = 100
+            roulette_30.transparency = 100
+            roulette_31.transparency = 100
+            roulette_32.transparency = 100
+            roulette_33.transparency = 100
+            roulette_34.transparency = 100
+            roulette_35.transparency = 100
+            roulette_36.transparency = 100
+            @rood.when_clicked
+            def rood_keuze_function():
+                resultaat_roul_function('rood')
+            @black.when_clicked
+            def zwart_keuze_function():
+                resultaat_roul_function('zwart')
+            def resultaat_roul_function(keuze_roul):
+                resultaat_roul = random.choice(['rood','zwart'])
+                if keuze_roul == resultaat_roul:
+                    win.show()
+                    rood.transparency = 0
+                    of.transparency = 0
+                    black.transparency = 0
+                    kies.transparency = 0 
+                    kiezen.transparency = 0
+                    doorgaan.show()
+                    def reset_na_uitslag():
+                        global in_game
+                        win.hide()
+                        in_game = False
+                        doorgaan.hide()
+                else:
+                    loss.show()
+                    rood.transparency = 0
+                    of.transparency = 0
+                    black.transparency = 0
+                    kies.transparency = 0 
+                    kiezen.transparency = 0
+                    doorgaan.show()
+                    @doorgaan.when_clicked
+                    def reset_na_uitslag():
+                        global in_game
+                        loss.hide()
+                        in_game = False
+                        doorgaan.hide()
 
-else:
+    else:
 
-    press_e_start_roulette.hide()
-             
-if player.is_touching(coinflip):
-    press_f_start_coinflip.show()
-    @play.when_key_pressed("f", "F")
-    def coinflip_function():
-        global in_game
-        in_game =  True
-        kiezen_coinflip.transparency= 100 
-        kies_tekst.transparency = 100
-        kop.transparency =100
-        of_tekst.transparency =100
-        munt.transparency = 100
-        @kop.when_clicked
-        def kies_kop():
-            resultaat_coin_function('kop')
-        @munt.when_clicked
-        def kies_munt():
-            resultaat_coin_function('munt')
-        def resultaat_coin_function(keuze_coin):
-            resultaat_coin = random.choice(['kop','munt'])
-            if keuze_coin == resultaat_coin:
-                win.show()
-                kiezen_coinflip.transparency = 0
-                kies_tekst.transparency = 0
-                of_tekst.transparency = 0
-                kop.transparency = 0 
-                munt.transparency = 0
-                doorgaan.show()
-                @doorgaan.when_clicked
-                def reset_na_uitslag():
-                    global in_game
-                    win.hide()
-                    in_game = False
-                    doorgaan.hide()
-            else:
-                loss.show()
-                kiezen_coinflip.transparency = 0
-                kies_tekst.transparency = 0
-                of_tekst.transparency = 0
-                kop.transparency = 0 
-                munt.transparency = 0
-                doorgaan.show()
-                @doorgaan.when_clicked
-                def reset_na_uitslag():
-                    global in_game
-                    loss.hide()
-                    in_game = False
-                    doorgaan.hide()
-            
-            # def inzet_function():
-          
-else:
-    press_f_start_coinflip.hide()
-
-    if player.is_touching(slot_machine):
-        press_g_start_slotmachine.show()
-        @play.when_key_pressed('g','G')
-        def slot_machine_function():
+        press_e_start_roulette.hide()
+                
+    if player.is_touching(coinflip):
+        press_f_start_coinflip.show()
+        @play.when_key_pressed("f", "F")
+        def coinflip_function():
             global in_game
             in_game =  True
-            slot_machine.transparency = 0
-            slot_machine_game.transparency = 100
+            kiezen_coinflip.transparency= 100 
+            kies_tekst.transparency = 100
+            kop.transparency =100
+            of_tekst.transparency =100
+            munt.transparency = 100
+            @kop.when_clicked
+            def kies_kop():
+                resultaat_coin_function('kop')
+            @munt.when_clicked
+            def kies_munt():
+                resultaat_coin_function('munt')
+            def resultaat_coin_function(keuze_coin):
+                resultaat_coin = random.choice(['kop','munt'])
+                if keuze_coin == resultaat_coin:
+                    win.show()
+                    kiezen_coinflip.transparency = 0
+                    kies_tekst.transparency = 0
+                    of_tekst.transparency = 0
+                    kop.transparency = 0 
+                    munt.transparency = 0
+                    doorgaan.show()
+                    @doorgaan.when_clicked
+                    def reset_na_uitslag():
+                        global in_game
+                        win.hide()
+                        in_game = False
+                        doorgaan.hide()
+                else:
+                    loss.show()
+                    kiezen_coinflip.transparency = 0
+                    kies_tekst.transparency = 0
+                    of_tekst.transparency = 0
+                    kop.transparency = 0 
+                    munt.transparency = 0
+                    doorgaan.show()
+                    @doorgaan.when_clicked
+                    def reset_na_uitslag():
+                        global in_game
+                        loss.hide()
+                        in_game = False
+                        doorgaan.hide()
+                
+                # def inzet_function():
             
+    else:
+        press_f_start_coinflip.hide()
+
+        if player.is_touching(slot_machine):
+            press_g_start_slotmachine.show()
+            @play.when_key_pressed('g','G')
+            def slot_machine_function():
+                global in_game
+                in_game =  True
+                slot_machine.transparency = 0
+                slot_machine_game.transparency = 100
+                
 
 def slot_combo_function():
     keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
@@ -437,6 +480,7 @@ if upgrade_1.transparency == 100:
         if not gekocht_1:
             koop_character(20, "zwerverboi.png")
             gekocht_1 = True
+            player.image = "zwerverboi.png"
         else:
             player.image = "zwerverboi.png"
 
@@ -496,7 +540,7 @@ if upgrade_7.transparency == 100:
             gekocht_7 = True
         else:
             player.image = "7.png"
-            player.angle = 180
+            player.angle  = 180
 
 if upgrade_8.transparency == 100:
     @upgrade_8.when_clicked
@@ -508,6 +552,7 @@ if upgrade_8.transparency == 100:
         else:
             player.image = "8.png"
             player.angle = 180
+            
 
 def koop_character(prijs, nieuwe_skin):
     global money
