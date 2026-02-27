@@ -431,25 +431,25 @@ def doorloop_function():
     else:
         press_f_start_coinflip.hide()
 
-        if player.is_touching(slot_machine):
-            press_g_start_slotmachine.show()
-            @play.when_key_pressed('g','G')
-            def slot_machine_function():
-                global in_game
-                in_game =  True
-                slot_machine.transparency = 0
-                slot_machine_game.transparency = 100
-                slot_combo_function()
+    if player.is_touching(slot_machine):
+        press_g_start_slotmachine.show()
+        @play.when_key_pressed('g','G')
+        def slot_machine_function():
+            global in_game
+            in_game =  True
+            slot_machine.transparency = 0
+            slot_machine_game.transparency = 100
+            def slot_combo_function():
+                global uitslag
+                keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
+                slot_1 = random.choice(keuzen)
+                slot_2 = random.choice(keuzen)
+                slot_3 = random.choice(keuzen)
+                uitslag.text =f"{slot_1 }  {slot_2 }{slot_3 }"
+                uitslag.transparency = 100
 
 
-def slot_combo_function():
-    global uitslag
-    keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
-    slot_1 = random.choice(keuzen)
-    slot_2 = random.choice(keuzen)
-    slot_3 = random.choice(keuzen)
-    uitslag.text = [slot_1,slot_2,slot_3]
-    uitslag.transparency = 100
+
 
 
 
