@@ -84,6 +84,7 @@ shop_text_geld_upgrade7.hide()
 shop_text_geld_upgrade8 = play.new_text("€2000,-", color = "black", font_size = 20, y = -175, x = 225)
 shop_text_geld_upgrade8.hide()
 
+uitslag = play.new_text("", font_size= 80, transparency=0)
 
 roulette_0 = play.new_text("0", x=-300, y=-50, transparency=0, color="green", font_size=30)
 
@@ -460,19 +461,31 @@ def doorloop_function():
     else:
         press_f_start_coinflip.hide()
 
-        if player.is_touching(slot_machine):
-            press_g_start_slotmachine.show()
-            @play.when_key_pressed('g','G')
-            def slot_machine_function():
-                global in_game
-                in_game =  True
-                slot_machine.transparency = 0
-                slot_machine_game.transparency = 100
-                
+    if player.is_touching(slot_machine):
+        press_g_start_slotmachine.show()
+        @play.when_key_pressed('g','G')
+        def slot_machine_function():
+            global in_game
+            in_game =  True
+            slot_machine.transparency = 0
+            slot_machine_game.transparency = 100
+            
 
 def slot_combo_function():
+    global uitslag
     keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
+    slot_1 = random.choice(keuzen)
+    slot_2 = random.choice(keuzen)
+    slot_3 = random.choice(keuzen)
+    uitslag.text = [slot_1,slot_2,slot_3]
+    uitslag.transparency = 100
 
+
+
+# def kers_voor_slot_symbool_function(uitslag):
+#     if "kers" is in uitslag:
+
+        
 if upgrade_1.transparency == 100:      
     @upgrade_1.when_clicked
     def buy_upgrade1():
