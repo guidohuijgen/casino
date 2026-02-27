@@ -375,6 +375,7 @@ def doorloop_function():
             in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
+            
 
 
 if upgrade_1.transparency == 100:      
