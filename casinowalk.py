@@ -111,47 +111,16 @@ roulette_33 = play.new_text("33", x=190, y=-160, transparency=0, color="red", fo
 roulette_34 = play.new_text("34", x=225, y=-160, transparency=0, color="black", font_size=30)
 roulette_35 = play.new_text("35", x=260, y=-160, transparency=0, color="red", font_size=30)
 roulette_36 = play.new_text("36", x=295, y=-160, transparency=0, color="black", font_size=30)
+alle_roulette_nummers = [
+    roulette_0, roulette_1, roulette_2, roulette_3, roulette_4,
+    roulette_5, roulette_6, roulette_7, roulette_8, roulette_9,
+    roulette_10, roulette_11, roulette_12, roulette_13, roulette_14,
+    roulette_15, roulette_16, roulette_17, roulette_18, roulette_19,
+    roulette_20, roulette_21, roulette_22, roulette_23, roulette_24,
+    roulette_25, roulette_26, roulette_27, roulette_28, roulette_29,
+    roulette_30, roulette_31, roulette_32, roulette_33, roulette_34,
+    roulette_35, roulette_36]
 
-roulette_0.hide()
-roulette_1.hide()
-roulette_2.hide()
-roulette_3.hide()
-roulette_4.hide()
-roulette_5.hide()
-roulette_6.hide()
-roulette_7.hide()
-roulette_8.hide()
-roulette_9.hide()
-roulette_10.hide()
-roulette_11.hide()
-roulette_12.hide()
-roulette_13.hide()
-roulette_14.hide()
-roulette_15.hide()
-roulette_16.hide()
-roulette_17.hide()
-roulette_18.hide()
-roulette_19.hide()
-roulette_20.hide()
-roulette_21.hide()
-roulette_22.hide()
-roulette_23.hide()
-roulette_24.hide()
-roulette_25.hide()
-roulette_26.hide()
-roulette_27.hide()
-roulette_28.hide()
-roulette_29.hide()
-roulette_30.hide()
-roulette_31.hide()
-roulette_32.hide()
-roulette_33.hide()
-roulette_34.hide()
-roulette_35.hide()
-roulette_36.hide()
-
-
-#test
 gekocht_1 = False
 gekocht_2 = False
 gekocht_3 = False
@@ -341,111 +310,112 @@ def doorloop_function():
         player.y = -315
     if player.y < -315:
         player.y = 315
-    if player.is_touching(roulette):
-        press_e_start_roulette.show()
-        @play.when_key_pressed("e", "E")
-        def roulette_function():
-            global in_game
-            in_game = True
-            press_e_start_roulette.hide()
-            rood.transparency =100
-            black.transparency = 100
-            of.transparency = 100
-            kiezen.transparency = 100
-            kies.transparency = 100           
-            @rood.when_clicked
-            def rood_keuze_function():
-                resultaat_roul_function('rood')
-            @black.when_clicked
-            def zwart_keuze_function():
-                resultaat_roul_function('zwart')
-            def resultaat_roul_function(keuze_roul):
-                resultaat_roul = random.choice(['rood','zwart'])
-                if keuze_roul == resultaat_roul:
-                    win.show()
-                    rood.transparency = 0
-                    of.transparency = 0
-                    black.transparency = 0
-                    kies.transparency = 0 
-                    kiezen.transparency = 0
-                    doorgaan.show()
-                    @doorgaan.when_clicked
-                    def reset_na_uitslag():
-                        global in_game
-                        win.hide()
-                        in_game = False
-                        doorgaan.hide()
-                else:
-                    loss.show()
-                    rood.transparency = 0
-                    of.transparency = 0
-                    black.transparency = 0
-                    kies.transparency = 0 
-                    kiezen.transparency = 0
-                    doorgaan.show()
-                    @doorgaan.when_clicked
-                    def reset_na_uitslag():
-                        global in_game
-                        loss.hide()
-                        in_game = False
-                        doorgaan.hide()
 
-    else:
 
-        press_e_start_roulette.hide()
+if player.is_touching(roulette):
+    @play.when_key_pressed("e", "E")
+    def roulette_function():
+        global in_game
+        in_game = True
+        rood.transparency =100
+        black.transparency = 100
+        of.transparency = 100
+        kiezen.transparency = 100
+        kies.transparency = 100  
+        roulette_0.show()
+    
+        @rood.when_clicked
+        def rood_keuze_function():
+            resultaat_roul_function('rood')
+        @black.when_clicked
+        def zwart_keuze_function():
+            resultaat_roul_function('zwart')
+        def resultaat_roul_function(keuze_roul):
+            resultaat_roul = random.choice(['rood','zwart'])
+            if keuze_roul == resultaat_roul:
+                win.show()
+                rood.transparency = 0
+                of.transparency = 0
+                black.transparency = 0
+                kies.transparency = 0 
+                kiezen.transparency = 0
+                doorgaan.show()
+                def reset_na_uitslag():
+                    global in_game
+                    win.hide()
+                    in_game = False
+                    doorgaan.hide()
+            else:
+                loss.show()
+                rood.transparency = 0
+                of.transparency = 0
+                black.transparency = 0
+                kies.transparency = 0 
+                kiezen.transparency = 0
+                doorgaan.show()
+                @doorgaan.when_clicked
+                def reset_na_uitslag():
+                    global in_game
+                    loss.hide()
+                    in_game = False
+                    doorgaan.hide()
+
+else:
+
+    press_e_start_roulette.hide()
              
-    if player.is_touching(coinflip):
-        press_f_start_coinflip.show()
-        @play.when_key_pressed("f", "F")
-        def coinflip_function():
-            global in_game
-            in_game =  True
-            kiezen_coinflip.transparency= 100 
-            kies_tekst.transparency = 100
-            kop.transparency =100
-            of_tekst.transparency =100
-            munt.transparency = 100
-            @kop.when_clicked
-            def kies_kop():
-                resultaat_coin_function('kop')
-            @munt.when_clicked
-            def kies_munt():
-                resultaat_coin_function('munt')
-            def resultaat_coin_function(keuze_coin):
-                resultaat_coin = random.choice(['kop','munt'])
-                if keuze_coin == resultaat_coin:
-                    win.show()
-                    kiezen_coinflip.transparency = 0
-                    kies_tekst.transparency = 0
-                    of_tekst.transparency = 0
-                    kop.transparency = 0 
-                    munt.transparency = 0
-                    doorgaan.show()
-                    @doorgaan.when_clicked
-                    def reset_na_uitslag():
-                        global in_game
-                        win.hide()
-                        in_game = False
-                        doorgaan.hide()
-                else:
-                    loss.show()
-                    kiezen_coinflip.transparency = 0
-                    kies_tekst.transparency = 0
-                    of_tekst.transparency = 0
-                    kop.transparency = 0 
-                    munt.transparency = 0
-                    doorgaan.show()
-                    @doorgaan.when_clicked
-                    def reset_na_uitslag():
-                        global in_game
-                        loss.hide()
-                        in_game = False
-                        doorgaan.hide()
+if player.is_touching(coinflip):
+    press_f_start_coinflip.show()
+    @play.when_key_pressed("f", "F")
+    def coinflip_function():
+        global in_game
+        in_game =  True
+        kiezen_coinflip.transparency= 100 
+        kies_tekst.transparency = 100
+        kop.transparency =100
+        of_tekst.transparency =100
+        munt.transparency = 100
+        @kop.when_clicked
+        def kies_kop():
+            resultaat_coin_function('kop')
+        @munt.when_clicked
+        def kies_munt():
+            resultaat_coin_function('munt')
+        def resultaat_coin_function(keuze_coin):
+            resultaat_coin = random.choice(['kop','munt'])
+            if keuze_coin == resultaat_coin:
+                win.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0 
+                munt.transparency = 0
+                doorgaan.show()
+                @doorgaan.when_clicked
+                def reset_na_uitslag():
+                    global in_game
+                    win.hide()
+                    in_game = False
+                    doorgaan.hide()
+            else:
+                loss.show()
+                kiezen_coinflip.transparency = 0
+                kies_tekst.transparency = 0
+                of_tekst.transparency = 0
+                kop.transparency = 0 
+                munt.transparency = 0
+                doorgaan.show()
+                @doorgaan.when_clicked
+                def reset_na_uitslag():
+                    global in_game
+                    loss.hide()
+                    in_game = False
+                    doorgaan.hide()
             
             # def inzet_function():
           
-    else:
-        press_f_start_coinflip.hide()
+else:
+    press_f_start_coinflip.hide()
 
     if player.is_touching(slot_machine):
         press_g_start_slotmachine.show()
@@ -455,7 +425,7 @@ def doorloop_function():
             in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
-
+            
 
 def slot_combo_function():
     keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
