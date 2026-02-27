@@ -87,7 +87,6 @@ shop_text_geld_upgrade8.hide()
 uitslag = play.new_text("", font_size= 80, transparency=0)
 
 roulette_0 = play.new_text("0", x=-300, y=-50, transparency=0, color="green", font_size=30)
-
 roulette_1 = play.new_text("1", x=-265, y=-50, transparency=0, color="red", font_size=30)
 roulette_2 = play.new_text("2", x=-230, y=-50, transparency=0, color="black", font_size=30)
 roulette_3 = play.new_text("3", x=-195, y=-50, transparency=0, color="red", font_size=30)
@@ -106,7 +105,6 @@ roulette_15 = play.new_text("15", x=225, y=-50, transparency=0, color="red", fon
 roulette_16 = play.new_text("16", x=260, y=-50, transparency=0, color="black", font_size=30)
 roulette_17 = play.new_text("17", x=295, y=-50, transparency=0, color="red", font_size=30)
 roulette_18 = play.new_text("18", x=330, y=-50, transparency=0, color="black", font_size=30)
-
 roulette_19 = play.new_text("19", x=-300, y=-100, transparency=0, color="red", font_size=30)
 roulette_20 = play.new_text("20", x=-265, y=-100, transparency=0, color="black", font_size=30)
 roulette_21 = play.new_text("21", x=-230, y=-100, transparency=0, color="red", font_size=30)
@@ -125,7 +123,6 @@ roulette_33 = play.new_text("33", x=190, y=-100, transparency=0, color="red", fo
 roulette_34 = play.new_text("34", x=225, y=-100, transparency=0, color="black", font_size=30)
 roulette_35 = play.new_text("35", x=260, y=-100, transparency=0, color="red", font_size=30)
 roulette_36 = play.new_text("36", x=295, y=-100, transparency=0, color="black", font_size=30)
-
 
 
 gekocht_1 = False
@@ -368,6 +365,117 @@ def doorloop_function():
             roulette_34.transparency = 100
             roulette_35.transparency = 100
             roulette_36.transparency = 100
+            @roulette_0.when_clicked
+            def nummer_0_function():
+                resultaat_roul_nummers('0')
+            @roulette_1.when_clicked
+            def nummer_1_function():
+                resultaat_roul_nummers('1')
+            @roulette_2.when_clicked
+            def nummer_2_function():
+                resultaat_roul_nummers('2')
+            @roulette_3.when_clicked
+            def nummer_3_function():
+                resultaat_roul_nummers('3')
+            @roulette_4.when_clicked
+            def nummer_4_function():
+                resultaat_roul_nummers('4')
+            @roulette_5.when_clicked
+            def nummer_5_function():
+                resultaat_roul_nummers('5')
+            @roulette_6.when_clicked
+            def nummer_6_function():
+                resultaat_roul_nummers('6')
+            @roulette_7.when_clicked
+            def nummer_7_function():
+                resultaat_roul_nummers('7')
+            @roulette_8.when_clicked
+            def nummer_8_function():
+                resultaat_roul_nummers('8')
+            @roulette_9.when_clicked
+            def nummer_9_function():
+                resultaat_roul_nummers('9')
+            @roulette_10.when_clicked
+            def nummer_10_function():
+                resultaat_roul_nummers('10')
+            @roulette_11.when_clicked
+            def nummer_11_function():
+                resultaat_roul_nummers('11')
+            @roulette_12.when_clicked
+            def nummer_12_function():
+                resultaat_roul_nummers('12')
+            @roulette_13.when_clicked
+            def nummer_13_function():
+                resultaat_roul_nummers('13')
+            @roulette_14.when_clicked
+            def nummer_14_function():
+                resultaat_roul_nummers('14')
+            @roulette_15.when_clicked
+            def nummer_15_function():
+                resultaat_roul_nummers('15')
+            @roulette_16.when_clicked
+            def nummer_16_function():
+                resultaat_roul_nummers('16')
+            @roulette_17.when_clicked
+            def nummer_17_function():
+                resultaat_roul_nummers('17')
+            @roulette_18.when_clicked
+            def nummer_18_function():
+                resultaat_roul_nummers('18')
+            @roulette_19.when_clicked
+            def nummer_19_function():
+                resultaat_roul_nummers('19')
+            @roulette_20.when_clicked
+            def nummer_20_function():
+                resultaat_roul_nummers('20')
+            @roulette_21.when_clicked
+            def nummer_21_function():
+                resultaat_roul_nummers('21')
+            @roulette_22.when_clicked
+            def nummer_22_function():
+                resultaat_roul_nummers('22')
+            @roulette_23.when_clicked
+            def nummer_23_function():
+                resultaat_roul_nummers('23')
+            @roulette_24.when_clicked
+            def nummer_24_function():
+                resultaat_roul_nummers('24')
+            @roulette_25.when_clicked
+            def nummer_25_function():
+                resultaat_roul_nummers('25')
+            @roulette_26.when_clicked
+            def nummer_26_function():
+                resultaat_roul_nummers('26')
+            @roulette_27.when_clicked
+            def nummer_27_function():
+                resultaat_roul_nummers('27')
+            @roulette_28.when_clicked
+            def nummer_28_function():
+                resultaat_roul_nummers('28')
+            @roulette_29.when_clicked
+            def nummer_29_function():
+                resultaat_roul_nummers('29')
+            @roulette_30.when_clicked
+            def nummer_30_function():
+                resultaat_roul_nummers('30')
+            @roulette_31.when_clicked
+            def nummer_31_function():
+                resultaat_roul_nummers('31')
+            @roulette_32.when_clicked
+            def nummer_32_function():
+                resultaat_roul_nummers('32')
+            @roulette_33.when_clicked
+            def nummer_33_function():
+                resultaat_roul_nummers('33')
+            @roulette_34.when_clicked
+            def nummer_34_function():
+                resultaat_roul_nummers('34')
+            @roulette_35.when_clicked
+            def nummer_35_function():
+                resultaat_roul_nummers('35')
+            @roulette_36.when_clicked
+            def nummer_36_function():
+                resultaat_roul_nummers('36')
             @rood.when_clicked
             def rood_keuze_function():
                 resultaat_roul_function('rood')
@@ -376,7 +484,12 @@ def doorloop_function():
                 resultaat_roul_function('zwart')
             def resultaat_roul_function(keuze_roul):
                 resultaat_roul = random.choice(['rood','zwart'])
-                if keuze_roul == resultaat_roul:
+            def resultaat_roul_nummers(keuze_roul):
+                resultaat_roul_nummers = random.choice(['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28', '29', '30', '31', '32', '33', '34', '35', '36'])
+                if keuze_roul == resultaat_roul_nummers:
+                    resultaat_roul_nummers = int(resultaat_roul_nummers)
+                    winst = 40 * 1
+                    win.text = f"Je hebt €{winst},- gewonnen!"
                     win.show()
                     loss.hide()
                     rood.transparency = 0
@@ -384,6 +497,43 @@ def doorloop_function():
                     black.transparency = 0
                     kies.transparency = 0 
                     kiezen.transparency = 0
+                    roulette_0.transparency = 0
+                    roulette_1.transparency = 0
+                    roulette_2.transparency = 0
+                    roulette_3.transparency = 0
+                    roulette_4.transparency = 0
+                    roulette_5.transparency = 0
+                    roulette_6.transparency = 0
+                    roulette_7.transparency = 0
+                    roulette_8.transparency = 0
+                    roulette_9.transparency = 0
+                    roulette_10.transparency = 0
+                    roulette_11.transparency = 0
+                    roulette_12.transparency = 0
+                    roulette_13.transparency = 0
+                    roulette_14.transparency = 0
+                    roulette_15.transparency = 0
+                    roulette_16.transparency = 0
+                    roulette_17.transparency = 0
+                    roulette_18.transparency = 0
+                    roulette_19.transparency = 0
+                    roulette_20.transparency = 0
+                    roulette_21.transparency = 0
+                    roulette_22.transparency = 0
+                    roulette_23.transparency = 0
+                    roulette_24.transparency = 0
+                    roulette_25.transparency = 0
+                    roulette_26.transparency = 0
+                    roulette_27.transparency = 0
+                    roulette_28.transparency = 0
+                    roulette_29.transparency = 0
+                    roulette_30.transparency = 0
+                    roulette_31.transparency = 0
+                    roulette_32.transparency = 0
+                    roulette_33.transparency = 0
+                    roulette_34.transparency = 0
+                    roulette_35.transparency = 0
+                    roulette_36.transparency = 0
                     doorgaan.show()
                     @doorgaan.when_clicked
                     def reset_na_uitslag():
@@ -399,6 +549,43 @@ def doorloop_function():
                     black.transparency = 0
                     kies.transparency = 0 
                     kiezen.transparency = 0
+                    roulette_0.transparency = 0
+                    roulette_1.transparency = 0
+                    roulette_2.transparency = 0
+                    roulette_3.transparency = 0
+                    roulette_4.transparency = 0
+                    roulette_5.transparency = 0
+                    roulette_6.transparency = 0
+                    roulette_7.transparency = 0
+                    roulette_8.transparency = 0
+                    roulette_9.transparency = 0
+                    roulette_10.transparency = 0
+                    roulette_11.transparency = 0
+                    roulette_12.transparency = 0
+                    roulette_13.transparency = 0
+                    roulette_14.transparency = 0
+                    roulette_15.transparency = 0
+                    roulette_16.transparency = 0
+                    roulette_17.transparency = 0
+                    roulette_18.transparency = 0
+                    roulette_19.transparency = 0
+                    roulette_20.transparency = 0
+                    roulette_21.transparency = 0
+                    roulette_22.transparency = 0
+                    roulette_23.transparency = 0
+                    roulette_24.transparency = 0
+                    roulette_25.transparency = 0
+                    roulette_26.transparency = 0
+                    roulette_27.transparency = 0
+                    roulette_28.transparency = 0
+                    roulette_29.transparency = 0
+                    roulette_30.transparency = 0
+                    roulette_31.transparency = 0
+                    roulette_32.transparency = 0
+                    roulette_33.transparency = 0
+                    roulette_34.transparency = 0
+                    roulette_35.transparency = 0
+                    roulette_36.transparency = 0
                     doorgaan.show()
                     @doorgaan.when_clicked
                     def reset_na_uitslag():
