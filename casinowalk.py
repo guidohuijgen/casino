@@ -469,16 +469,17 @@ def doorloop_function():
             in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
-            
+            def slot_combo_function():
+                global uitslag
+                keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
+                slot_1 = random.choice(keuzen)
+                slot_2 = random.choice(keuzen)
+                slot_3 = random.choice(keuzen)
+                uitslag.text =f"{slot_1 }  {slot_2 }{slot_3 }"
+                uitslag.transparency = 100
 
-def slot_combo_function():
-    global uitslag
-    keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
-    slot_1 = random.choice(keuzen)
-    slot_2 = random.choice(keuzen)
-    slot_3 = random.choice(keuzen)
-    uitslag.text = [slot_1,slot_2,slot_3]
-    uitslag.transparency = 100
+
+
 
 
 
