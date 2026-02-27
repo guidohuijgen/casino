@@ -417,16 +417,18 @@ if player.is_touching(coinflip):
 else:
     press_f_start_coinflip.hide()
 
-if player.is_touching(slot_machine):
-    press_g_start_slotmachine.show()
-    @play.when_key_pressed('g','G')
-    def slot_machine_function():
-        global in_game
-        in_game =  True
-        slot_machine.transparency = 0
-        slot_machine_game.transparency = 100
+    if player.is_touching(slot_machine):
+        press_g_start_slotmachine.show()
+        @play.when_key_pressed('g','G')
+        def slot_machine_function():
+            global in_game
+            in_game =  True
+            slot_machine.transparency = 0
+            slot_machine_game.transparency = 100
             
 
+def slot_combo_function():
+    keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
 
 if upgrade_1.transparency == 100:      
     @upgrade_1.when_clicked
