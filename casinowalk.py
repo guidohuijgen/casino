@@ -451,8 +451,11 @@ def doorloop_function():
         press_g_start_slotmachine.show()
         @play.when_key_pressed('g','G')
         def slot_machine_function():
+            global in_game
+            in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
+            
 
 
 if upgrade_1.transparency == 100:      
@@ -550,5 +553,6 @@ def stop_presstostart_function():
     if in_game == True:
         press_f_start_coinflip.hide()
         press_e_start_roulette.hide()
+        press_g_start_slotmachine.hide()
 
 play.start_program()
