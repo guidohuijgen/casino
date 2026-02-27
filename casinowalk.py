@@ -9,7 +9,7 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 slot_machine = play.new_image("slotmachinebegin.png",size = 80, x = 260, y = 150, transparency=0 )
 slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 150, x = 260, transparency=0 )
 
-roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
+roulette = play.new_image("roulette plaatje.png", size  = 80, x = -300, y = -200, transparency= 0)
 
 coinflip = play.new_image("image.png", size = 60, x = -300, y = 200, transparency= 0)
 
@@ -78,6 +78,7 @@ gekocht_5 = False
 gekocht_6 = False
 gekocht_7 = False
 gekocht_8 = False
+
 
 upgrade_1 = play.new_image("zwerverboi.png", size = 32, transparency = 0, x = -225, y = 30)
 upgrade_2 = play.new_image("niet meer straatarm.png", size = 10, transparency = 0, x = -75, y = 30)
