@@ -455,8 +455,10 @@ def doorloop_function():
             in_game =  True
             slot_machine.transparency = 0
             slot_machine_game.transparency = 100
-            
 
+
+def slot_combo_function():
+    keuzen = ["kers","appel","druif", "hart", "bel","bar","peer", "7"]
 
 if upgrade_1.transparency == 100:      
     @upgrade_1.when_clicked
