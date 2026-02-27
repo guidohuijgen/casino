@@ -23,8 +23,6 @@ limoen_slot = play.new_image("peer.png", size = 30, transparency=0)
 zeven_slot = play.new_image("slot7.png",size = 30, transparency=0) 
 
 roulette = play.new_image("roulette plaatje.png", size  = 80, x = -300, y = -200, transparency= 0)
-press_e_start_roulette = play.new_text("Press E to enter the roulette", color = "black", font_size = 25, x = 0, y = 0,)
-press_e_start_roulette.hide()
 
 coinflip = play.new_image("image.png", size = 60, x = -300, y = 200, transparency= 0)
 
@@ -57,6 +55,8 @@ money_button = play.new_text (f'{money} ', color = 'black', font_size = 25, x = 
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
 
+press_e_start_roulette = play.new_text("Press E to enter the roulette", color = "black", font_size = 25, x = 0, y = -100,)
+press_e_start_roulette.hide()
 press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25, y = -100)
 press_f_start_coinflip.hide()
 press_g_start_slotmachine = play.new_text("Press G to start the slot machine game!",color = 'black', font_size = 25, y= -100)
@@ -378,12 +378,14 @@ def doorloop_function():
                 resultaat_roul = random.choice(['rood','zwart'])
                 if keuze_roul == resultaat_roul:
                     win.show()
+                    loss.hide()
                     rood.transparency = 0
                     of.transparency = 0
                     black.transparency = 0
                     kies.transparency = 0 
                     kiezen.transparency = 0
                     doorgaan.show()
+                    @doorgaan.when_clicked
                     def reset_na_uitslag():
                         global in_game
                         win.hide()
@@ -391,6 +393,7 @@ def doorloop_function():
                         doorgaan.hide()
                 else:
                     loss.show()
+                    win.hide()
                     rood.transparency = 0
                     of.transparency = 0
                     black.transparency = 0
@@ -429,6 +432,7 @@ def doorloop_function():
                 resultaat_coin = random.choice(['kop','munt'])
                 if keuze_coin == resultaat_coin:
                     win.show()
+                    loss.hide()
                     kiezen_coinflip.transparency = 0
                     kies_tekst.transparency = 0
                     of_tekst.transparency = 0
@@ -443,6 +447,7 @@ def doorloop_function():
                         doorgaan.hide()
                 else:
                     loss.show()
+                    win.hide()
                     kiezen_coinflip.transparency = 0
                     kies_tekst.transparency = 0
                     of_tekst.transparency = 0
