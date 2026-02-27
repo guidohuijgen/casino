@@ -6,7 +6,7 @@ achtergrond = play.new_box(color = "dark red", width = 800, height = 800, transp
 
 beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
-slot_machine = play.new_image("gamble-slot-machine-in-pixel-art-style-vector-removebg-preview.png",size = 80, x = 260, y = 150, transparency=0 )
+slot_machine = play.new_image("slotmachinebegin.png",size = 80, x = 260, y = 150, transparency=0 )
 slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 150, x = 260, transparency=0 )
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
