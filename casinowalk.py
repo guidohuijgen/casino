@@ -7,7 +7,7 @@ achtergrond = play.new_box(color = "dark red", width = 800, height = 800, transp
 beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 
 slot_machine = play.new_image("slotmachinebegin.png",size = 80, x = 260, y = 150, transparency=0 )
-slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 150, x = 260, transparency=0 )
+slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 148, x = 260, transparency=0 )
 
 roulette = play.new_image("roullette.png", size  = 100, x = -300, y = -200, transparency= 0)
 
@@ -46,6 +46,8 @@ press_e_start_roulette = play.new_text("Press E to start the roulette game!", co
 press_e_start_roulette.hide()
 press_f_start_coinflip = play.new_text("Press F to start the coinflip game!", color= "black", font_size = 25, y = -100)
 press_f_start_coinflip.hide()
+press_g_start_slotmachine = play.new_text("Press G to start the slot machine game!",color = 'black', font_size = 25, y= -100)
+press_g_start_slotmachine.hide()
 
 shop_text_welcome = play.new_text("Welcome to the shop!",color="black",font_size=35,y=225, x =0)
 shopt_text_explain = play.new_text("Here you can buy outfit upgrades to level up", color = "black", font_size = 20, y = 190, x = 0)
@@ -363,6 +365,14 @@ def doorloop_function():
           
     else:
         press_f_start_coinflip.hide()
+
+    if player.is_touching(slot_machine):
+        press_g_start_slotmachine.show()
+        @play.when_key_pressed('g','G')
+        def slot_machine_function():
+            slot_machine.transparency = 0
+            slot_machine_game.transparency = 100
+
 
 if upgrade_1.transparency == 100:      
     @upgrade_1.when_clicked
