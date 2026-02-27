@@ -477,8 +477,8 @@ def doorloop_function():
             slot_combo_function()
 
 def slot_combo_function():
-                keuzen = ["kers", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
-                keuzen_naar_image  = {"kers": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
+                keuzen = ["kers1","kers2","kers3", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
+                keuzen_naar_image  = {"kers1": kers_slot,"kers2": kers_slot,"kers3": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
                 for i in keuzen_naar_image.values():
                     i.transparency = 0
                 slot_1 = random.choice(keuzen)
@@ -497,8 +497,7 @@ def slot_combo_function():
                 slot_2_foto.transparency =100
                 slot_3_foto.transparency = 100
 
-# def kers_voor_slot_symbool_function(uitslag):
-#     if "kers" is in uitslag:
+
 
         
 if upgrade_1.transparency == 100:      
