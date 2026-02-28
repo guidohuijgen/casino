@@ -359,25 +359,25 @@ def slot_machine_function():
             slot_machine_game.transparency = 100
 
 def slot_combo_function():
-                keuzen = ["kers1","kers2","kers3", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
-                keuzen_naar_image  = {"kers1": kers_slot,"kers2": kers_slot,"kers3": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
-                for i in keuzen_naar_image.values():
-                    i.transparency = 0
-                slot_1 = random.choice(keuzen)
-                slot_1_foto = keuzen_naar_image[slot_1]
-                slot_2 = random.choice(keuzen)
-                slot_2_foto = keuzen_naar_image[slot_2]
-                slot_3 = random.choice(keuzen)
-                slot_3_foto = keuzen_naar_image[slot_3]
-                slot_1_foto.x = 223
-                slot_2_foto.x= 260
-                slot_3_foto.x = 297
-                slot_1_foto.y =145
-                slot_2_foto.y = 145
-                slot_3_foto.y = 145
-                slot_1_foto.transparency = 100
-                slot_2_foto.transparency =100
-                slot_3_foto.transparency = 100
+    keuzen = ["kers1","kers2","kers3", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
+    keuzen_naar_image  = {"kers1": kers_slot,"kers2": kers_slot,"kers3": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
+    for i in keuzen_naar_image.values():
+        i.transparency = 0
+    slot_1 = random.choice(keuzen)
+    slot_1_foto = keuzen_naar_image[slot_1]
+    slot_2 = random.choice(keuzen)
+    slot_2_foto = keuzen_naar_image[slot_2]
+    slot_3 = random.choice(keuzen)
+    slot_3_foto = keuzen_naar_image[slot_3]
+    slot_1_foto.x = 223
+    slot_2_foto.x= 260
+    slot_3_foto.x = 297
+    slot_1_foto.y =145
+    slot_2_foto.y = 145
+    slot_3_foto.y = 145
+    slot_1_foto.transparency = 100
+    slot_2_foto.transparency =100
+    slot_3_foto.transparency = 100
 
 
 def inzet_function():
@@ -392,14 +392,97 @@ def inzet_function():
     tweeduizend_inzet.transparency = 100
     @vijf_inzet.when_clicked
     def inzet_vijf_function():
-        global money
-        # global inzet_ingevoerd
-        # global inzet
-        money-= 5
-        # inzet += 5
-        # inzet_ingevoerd = True
-        # money_button.text = (f'{money}')
-        # money_button.transparency = 100
+        if vijf_inzet.transparency ==100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 5
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 5
+            inzet_ingevoerd = True
+    @tien_inzet.when_clicked
+    def inzet_tien_function():
+        if tien_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 10
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 10
+            inzet_ingevoerd = True
+    @twintig_inzet.when_clicked
+    def inzet_twintig_function():
+        if twintig_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 20
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 20
+            inzet_ingevoerd = True
+    @vijftig_inzet.when_clicked
+    def inzet_vijftig_function():
+        if vijftig_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 50
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 50
+            inzet_ingevoerd = True
+    @honderd_inzet.when_clicked
+    def inzet_honderd_function():
+        if honderd_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 100
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 100
+            inzet_ingevoerd = True
+    @vijfhonderd_inzet.when_clicked
+    def inzet_vijfhonderd_function():
+        if vijfhonderd_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 500
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 500
+            inzet_ingevoerd = True
+    @duizend_inzet.when_clicked
+    def inzet_duizend_function():
+        if duizend_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            money-= 1000
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet += 1000
+            inzet_ingevoerd = True
+    @tweeduizend_inzet.when_clicked
+    def inzet_tweeduizend_function():
+        if tweeduizend_inzet.transparency == 100:
+            global money
+            global inzet_ingevoerd
+            global inzet
+            inzet += 2000
+            check_genoeg_geld(2000)
+            money-= 2000
+            money_button.text = (f'{money}')
+            money_button.transparency = 100
+            inzet_ingevoerd = True
+def check_genoeg_geld(inzet):
+    if money<inzet:
+        play.new_text("Niet genoeg geld!", y=150, font_size=30)
+        play.new_text ("Klik opnieuw", y = 50, font_size = 30)
 
 @play.when_key_pressed("e", "E")
 def roulette_function():
