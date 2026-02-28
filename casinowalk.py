@@ -177,6 +177,8 @@ tweeduizend_inzet = play.new_text ("€2000,-",color= 'black',font_size=25, x = 
 in_game = False 
 inzet_ingevoerd = False
 
+niet_genoeg = play.new_text("Niet genoeg geld!", y=150, font_size=30, transparency=0)
+opnieuw = play.new_text ("Klik opnieuw", y = 50, font_size = 30, transparency=0)
 
 @play.repeat_forever
 async def game_over_function():
@@ -396,77 +398,106 @@ def inzet_function():
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 5
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 5
-            inzet_ingevoerd = True
+            check_genoeg_geld(5)
+            if money> inzet:
+                money-= 5
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+
+            else:
+                check_genoeg_geld(5)
     @tien_inzet.when_clicked
     def inzet_tien_function():
         if tien_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 10
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 10
-            inzet_ingevoerd = True
+            check_genoeg_geld(10)
+            if money> inzet:
+                money-= 10
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(10)
     @twintig_inzet.when_clicked
     def inzet_twintig_function():
         if twintig_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 20
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 20
-            inzet_ingevoerd = True
+            check_genoeg_geld(20)
+            if money> inzet:
+                money-= 20
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(20)
     @vijftig_inzet.when_clicked
     def inzet_vijftig_function():
         if vijftig_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 50
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 50
-            inzet_ingevoerd = True
+            check_genoeg_geld(50)
+            if money> inzet:
+                money-= 50
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(50)
     @honderd_inzet.when_clicked
     def inzet_honderd_function():
         if honderd_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 100
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 100
-            inzet_ingevoerd = True
+            check_genoeg_geld(100)
+            if money> inzet:
+                money-= 100
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(100)
     @vijfhonderd_inzet.when_clicked
     def inzet_vijfhonderd_function():
         if vijfhonderd_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 500
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 500
-            inzet_ingevoerd = True
+            check_genoeg_geld(500)
+            if money> inzet:
+                money-= 500
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(500)
     @duizend_inzet.when_clicked
     def inzet_duizend_function():
         if duizend_inzet.transparency == 100:
             global money
             global inzet_ingevoerd
             global inzet
-            money-= 1000
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
             inzet += 1000
-            inzet_ingevoerd = True
+            check_genoeg_geld(1000)
+            if money> inzet:
+                money-= 1000
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else:
+                check_genoeg_geld(1000)
     @tweeduizend_inzet.when_clicked
     def inzet_tweeduizend_function():
         if tweeduizend_inzet.transparency == 100:
@@ -475,14 +506,22 @@ def inzet_function():
             global inzet
             inzet += 2000
             check_genoeg_geld(2000)
-            money-= 2000
-            money_button.text = (f'{money}')
-            money_button.transparency = 100
-            inzet_ingevoerd = True
+            if money> inzet:
+                money-= 2000
+                money_button.text = (f'{money}')
+                money_button.transparency = 100
+                inzet_ingevoerd = True
+            else: 
+                check_genoeg_geld(2000)
 def check_genoeg_geld(inzet):
     if money<inzet:
-        play.new_text("Niet genoeg geld!", y=150, font_size=30)
-        play.new_text ("Klik opnieuw", y = 50, font_size = 30)
+        niet_genoeg.transparency = 100
+        opnieuw.transparency = 100
+    else:
+        opnieuw.transparency = 0
+        niet_genoeg.transparency = 0
+
+
 
 @play.when_key_pressed("e", "E")
 def roulette_function():
