@@ -67,7 +67,8 @@ doorgaan_roul = play.new_text('DOORGAAN ->', y = -200)
 doorgaan_roul.hide()
 doorgaan_slot = play.new_text('DOORGAAN ->', y = -200)
 doorgaan_slot.hide()
-money = 20
+
+money = 2000
 money_button = play.new_text (f'{money}', color = 'black', font_size = 25, x = 270, y = 240, transparency=0)
 inzet = 0
 
@@ -395,8 +396,8 @@ def slot_combo_function():
     slot_1_foto.transparency = 100
     slot_2_foto.transparency =100
     slot_3_foto.transparency = 100
-    resultaat_slot_function(slot_1, slot_2, slot_3)
-def resultaat_slot_function(slot_1,slot_2,slot_3):
+    resultaat_slot_function(slot_1, slot_2, slot_3, slot_1_foto, slot_2_foto,slot_3_foto)
+def resultaat_slot_function(slot_1,slot_2,slot_3, slot_1_foto, slot_2_foto,slot_3_foto):
     if slot_1 == slot_2 ==  slot_3:
         super_win.show()
         doorgaan.show()
@@ -406,6 +407,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             super_win.hide()
             in_game = False
             doorgaan.hide()
+            slot_1_foto.transparency = 0
+            slot_2_foto.transparency = 0
+            slot_3_foto.transparency = 0
     elif slot_1 == slot_2:
         partial_win.show()
         doorgaan.show()
@@ -415,6 +419,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             partial_win.hide()
             in_game = False
             doorgaan.hide()
+            slot_1_foto.transparency = 0
+            slot_2_foto.transparency = 0
+            slot_3_foto.transparency = 0
     elif slot_1 == slot_3:
         partial_win.show()
         doorgaan.show()
@@ -424,6 +431,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             partial_win.hide()
             in_game = False
             doorgaan.hide()
+            slot_1_foto.transparency = 0
+            slot_2_foto.transparency = 0
+            slot_3_foto.transparency = 0
     elif slot_2 == slot_3:
         partial_win.show()
         doorgaan.show()
@@ -433,6 +443,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             partial_win.hide()
             in_game = False
             doorgaan.hide()
+            slot_1_foto.transparency = 0
+            slot_2_foto.transparency = 0
+            slot_3_foto.transparency = 0
     elif slot_1 != slot_2 and slot_1 != slot_3 and slot_2 != slot_3:
         loss.show()
         doorgaan.show()
@@ -442,6 +455,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             loss.hide()
             in_game = False
             doorgaan.hide()
+            slot_1_foto.transparency = 0
+            slot_2_foto.transparency = 0
+            slot_3_foto.transparency = 0
 
             
 
@@ -1013,9 +1029,10 @@ def coinflip_function():
     else:
         press_f_start_coinflip.hide()   
 
-if upgrade_1.transparency == 100:      
-    @upgrade_1.when_clicked
-    def buy_upgrade1():
+    
+@upgrade_1.when_clicked
+def buy_upgrade1():
+    if upgrade_1.transparency == 100:  
         global gekocht_1
         if not gekocht_1:
             koop_character(20, "zwerverboi.png")
@@ -1024,27 +1041,30 @@ if upgrade_1.transparency == 100:
         else:
             player.image = "zwerverboi.png"
 
-if upgrade_2.transparency == 100:
-    @upgrade_2.when_clicked
-    def buy_upgrade2():
+
+@upgrade_2.when_clicked
+def buy_upgrade2():
+    if upgrade_2.transparency == 100:
         global gekocht_2
         if not gekocht_2:
             koop_character(80, "niet meer straatarm.png")
             gekocht_2 = True
         else:
             player.image = "niet meer straatarm.png"
-if upgrade_3.transparency == 100:
-    @upgrade_3.when_clicked
-    def buy_upgrade3():
+
+@upgrade_3.when_clicked
+def buy_upgrade3():
+    if upgrade_3.transparency == 100:
         global gekocht_3
         if not gekocht_3:
             koop_character(150, "soort van rijk.png")
             gekocht_3 = True
         else:
             player.image = "soort van rijk.png"
-if upgrade_4.transparency == 100:
-    @upgrade_4.when_clicked
-    def buy_upgrade4():
+
+@upgrade_4.when_clicked
+def buy_upgrade4():
+    if upgrade_4.transparency == 100:
         global gekocht_4
         if not gekocht_4:
             koop_character(250, "best rijk.png")
@@ -1052,9 +1072,10 @@ if upgrade_4.transparency == 100:
         else:
             player.image = "best rijk.png"
 
-if upgrade_5.transparency == 100:
-    @upgrade_5.when_clicked
-    def buy_upgrade5():
+
+@upgrade_5.when_clicked
+def buy_upgrade5():
+    if upgrade_5.transparency == 100:
         global gekocht_5
         if not gekocht_5:
             koop_character(450, "koning5.png")
@@ -1062,18 +1083,20 @@ if upgrade_5.transparency == 100:
         else:
             player.image = "koning5.png"
 
-if upgrade_6.transparency == 100:
-    @upgrade_6.when_clicked
-    def buy_upgrade6():
+
+@upgrade_6.when_clicked
+def buy_upgrade6():
+    if upgrade_6.transparency == 100:
         global gekocht_6
         if not gekocht_6:
             koop_character(650, "koning zes.png")
             gekocht_6 = True
         else:
             player.image = "koning zes.png"
-if upgrade_7.transparency == 100:
-    @upgrade_7.when_clicked
-    def buy_upgrade7():
+
+@upgrade_7.when_clicked
+def buy_upgrade7():
+    if upgrade_7.transparency == 100:
         global gekocht_7
         if not gekocht_7:
             koop_character(1000, "7.png")
@@ -1082,9 +1105,10 @@ if upgrade_7.transparency == 100:
             player.image = "7.png"
             player.angle  = 180
 
-if upgrade_8.transparency == 100:
-    @upgrade_8.when_clicked
-    def buy_upgrade8():
+
+@upgrade_8.when_clicked
+def buy_upgrade8():
+    if upgrade_8.transparency == 100:
         global gekocht_8
         if not gekocht_8:
             koop_character(2000, "8.png")
@@ -1093,17 +1117,19 @@ if upgrade_8.transparency == 100:
             player.image = "8.png"
             player.angle = 180
             
-
+#async geprobeerd maar lukt nog niet
 def koop_character(prijs, nieuwe_skin):
     global money
-    if money >= prijs:
+    if money > prijs:
         money -= prijs
         money_button.text = f"{money}"
         player.image = nieuwe_skin
         if money <= 0:
             game_over.transparency = 100
     else:
-        play.new_text("Niet genoeg geld!", y=150, font_size=30)
+        niet_genoeg_geld = play.new_text("Niet genoeg geld!", y=150, font_size=30)
+        # await play.timer(seconds = 2)
+        # niet_genoeg_geld.hide()
 
 @play.repeat_forever
 def stop_presstostart_function():
