@@ -9,18 +9,30 @@ beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
 slot_machine = play.new_image("slotmachinebegin.png",size = 80, x = 260, y = 150, transparency=0 )
 slot_machine_game = play.new_image("slotmachinegame.png", size = 80, y = 148, x = 260, transparency=0 )
 
-appel_slot= play.new_image("appel.png", size = 30, transparency= 0)
-bar_white= play.new_box(color = 'white', width = 30, height = 20)
-bar_slot = play.new_image("bar.png", size = 30, transparency= 0)
-bar_white.y = bar_slot.y
-bar_white.x = bar_slot.x
-bar_white.transparency = bar_slot.transparency
-bel_slot = play.new_image("bel.png", size  =30, transparency= 0 )
-druif_slot  = play.new_image("druif.png", size = 30, transparency=0)
-hart_slot = play.new_image("hart.png", size = 30,transparency=0)
-kers_slot = play.new_image("kers.png", size = 30, transparency=0 )
-limoen_slot = play.new_image("peer.png", size = 30, transparency=0)
-zeven_slot = play.new_image("slot7.png",size = 30, transparency=0) 
+appel_slot1= play.new_image("appel.png", size = 30, transparency= 0)
+appel_slot2= play.new_image("appel.png", size = 30, transparency= 0)
+appel_slot3= play.new_image("appel.png", size = 30, transparency= 0)
+bar_slot1 = play.new_image("bar.png", size = 30, transparency= 0)
+bar_slot2 = play.new_image("bar.png", size = 30, transparency= 0)
+bar_slot3 = play.new_image("bar.png", size = 30, transparency= 0)
+bel_slot1 = play.new_image("bel.png", size  =30, transparency= 0 )
+bel_slot2 = play.new_image("bel.png", size  =30, transparency= 0 )
+bel_slot3 = play.new_image("bel.png", size  =30, transparency= 0 )
+druif_slot1  = play.new_image("druif.png", size = 30, transparency=0)
+druif_slot2  = play.new_image("druif.png", size = 30, transparency=0)
+druif_slot3  = play.new_image("druif.png", size = 30, transparency=0)
+hart_slot1 = play.new_image("hart.png", size = 30,transparency=0)
+hart_slot2 = play.new_image("hart.png", size = 30,transparency=0)
+hart_slot3 = play.new_image("hart.png", size = 30,transparency=0)
+kers_slot1 = play.new_image("kers.png", size = 30, transparency=0 )
+kers_slot2 = play.new_image("kers.png", size = 30, transparency=0 )
+kers_slot3 = play.new_image("kers.png", size = 30, transparency=0 )
+limoen_slot1 = play.new_image("peer.png", size = 30, transparency=0)
+limoen_slot2 = play.new_image("peer.png", size = 30, transparency=0)
+limoen_slot3 = play.new_image("peer.png", size = 30, transparency=0)
+zeven_slot1 = play.new_image("slot7.png",size = 30, transparency=0) 
+zeven_slot2 = play.new_image("slot7.png",size = 30, transparency=0) 
+zeven_slot3 = play.new_image("slot7.png",size = 30, transparency=0) 
 
 roulette = play.new_image("roulette plaatje.png", size  = 80, x = -300, y = -200, transparency= 0)
 
@@ -163,10 +175,14 @@ of_tekst = play.new_text("of", color="white", x=50, transparency=0)
 munt = play.new_text("munt", color="green", x=150, transparency=0)
 
 winst = 0
-win = play.new_text(f"Je hebt €{winst},-  gewonnen!")
+win = play.new_text("Je hebt gewonnen!", font_size=25)
 win.hide()
+super_win = play.new_text("Je hebt 3x hetzelfde symbool, dus GEWONNEN!!", font_size= 25)
+super_win.hide()
+partial_win = play.new_text("Je hebt 2x hetzelfde symbool, dus gewonnen!!", font_size = 25)
+partial_win.hide()
 verlies = 0
-loss = play.new_text(f"Je hebt €{verlies},- verloren...")
+loss = play.new_text("Je hebt verloren...", font_size=25)
 loss.hide()
 
 kies_inzet = play.new_text("Kies je inzet, door te klikken!", color = 'black', y = 100, font_size=25, transparency= 0)
@@ -352,15 +368,16 @@ def slot_machine_function():
         inzet_function()
         doorgaan_slot.show()
         @doorgaan_slot.when_clicked
-        def echte_slot_function(inzet):
+        def echte_slot_function():
             doorgaan_slot.hide()
-            slot_combo_function()
-            slot_machine.transparency = 0
-            slot_machine_game.transparency = 100
+            if inzet_ingevoerd == True:
+                slot_machine.transparency = 0
+                slot_machine_game.transparency = 100
+                slot_combo_function()
 
 def slot_combo_function():
-    keuzen = ["kers1","kers2","kers3", "appel", "druif","hart", "limoen", "bar", "bel", "zeven"]
-    keuzen_naar_image  = {"kers1": kers_slot,"kers2": kers_slot,"kers3": kers_slot, "appel":appel_slot, "druif": druif_slot, "hart": hart_slot, "limoen": limoen_slot,"bar": bar_slot,"bel": bel_slot,"zeven": zeven_slot}
+    keuzen = ["kers1","kers2", "kers3", "appel1","appel2", "appel3", "druif1","druif2", "druif3","hart1","hart2","hart3", "limoen1", "limoen2","limoen3", "bar1","bar2", "bar3", "bel1","bel2","bel3", "zeven1", "zeven2","zeven3"]
+    keuzen_naar_image  = {"kers1": kers_slot1,"kers2":kers_slot2,"kers3":kers_slot3, "appel1":appel_slot1,"appel2":appel_slot2, "appel3":appel_slot3, "druif1": druif_slot1,"druif2":druif_slot2, "druif3":druif_slot3, "hart1": hart_slot1, "hart2":hart_slot2, "hart3":hart_slot3,"limoen1": limoen_slot1,"limoen2": limoen_slot2,"limoen3":limoen_slot3, "bar1": bar_slot1,"bar2":bar_slot2,"bar3": bar_slot3,"bel1": bel_slot1,"bel2":bel_slot2, "bel3":bel_slot3, "zeven1": zeven_slot1, "zeven2": zeven_slot2,"zeven3":zeven_slot3}
     for i in keuzen_naar_image.values():
         i.transparency = 0
     slot_1 = random.choice(keuzen)
@@ -378,6 +395,55 @@ def slot_combo_function():
     slot_1_foto.transparency = 100
     slot_2_foto.transparency =100
     slot_3_foto.transparency = 100
+    resultaat_slot_function(slot_1, slot_2, slot_3)
+def resultaat_slot_function(slot_1,slot_2,slot_3):
+    if slot_1 == slot_2 ==  slot_3:
+        super_win.show()
+        doorgaan.show()
+        @doorgaan.when_clicked
+        def reset_na_uitslag():
+            global in_game
+            super_win.hide()
+            in_game = False
+            doorgaan.hide()
+    elif slot_1 == slot_2:
+        partial_win.show()
+        doorgaan.show()
+        @doorgaan.when_clicked
+        def reset_na_uitslag():
+            global in_game
+            partial_win.hide()
+            in_game = False
+            doorgaan.hide()
+    elif slot_1 == slot_3:
+        partial_win.show()
+        doorgaan.show()
+        @doorgaan.when_clicked
+        def reset_na_uitslag():
+            global in_game
+            partial_win.hide()
+            in_game = False
+            doorgaan.hide()
+    elif slot_2 == slot_3:
+        partial_win.show()
+        doorgaan.show()
+        @doorgaan.when_clicked
+        def reset_na_uitslag():
+            global in_game
+            partial_win.hide()
+            in_game = False
+            doorgaan.hide()
+    elif slot_1 != slot_2 and slot_1 != slot_3 and slot_2 != slot_3:
+        loss.show()
+        doorgaan.show()
+        @doorgaan.when_clicked
+        def reset_na_uitslag():
+            global in_game
+            loss.hide()
+            in_game = False
+            doorgaan.hide()
+
+            
 
 
 def inzet_function():
@@ -414,9 +480,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
-
-
             else:
                 check_genoeg_geld(5)
     @tien_inzet.when_clicked
@@ -441,7 +504,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else:
                 check_genoeg_geld(10)
     @twintig_inzet.when_clicked
@@ -466,7 +528,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else:
                 check_genoeg_geld(20)
     @vijftig_inzet.when_clicked
@@ -491,7 +552,7 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
+
             else:
                 check_genoeg_geld(50)
     @honderd_inzet.when_clicked
@@ -516,7 +577,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else:
                 check_genoeg_geld(100)
     @vijfhonderd_inzet.when_clicked
@@ -541,7 +601,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else:
                 check_genoeg_geld(500)
     @duizend_inzet.when_clicked
@@ -566,7 +625,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else:
                 check_genoeg_geld(1000)
     @tweeduizend_inzet.when_clicked
@@ -591,7 +649,6 @@ def inzet_function():
                 duizend_inzet.transparency = 0
                 tweeduizend_inzet.transparency = 0
                 inzet_ingevoerd = True
-                return inzet
             else: 
                 check_genoeg_geld(2000)
 
@@ -787,7 +844,7 @@ def roulette_function():
                     resultaat_roul_function('zwart')
                 def resultaat_roul_function(keuze_roul):
                     resultaat_roul = random.choice(['rood','zwart'])
-                def resultaat_roul_nummers(keuze_roul):
+                def resultaat_roul_nummers(keuze_roul): 
                     resultaat_roul_nummers = random.choice(['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28', '29', '30', '31', '32', '33', '34', '35', '36'])
                     if keuze_roul == resultaat_roul_nummers:
                         resultaat_roul_nummers = int(resultaat_roul_nummers)
