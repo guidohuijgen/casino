@@ -215,6 +215,33 @@ opnieuw = play.new_text ("Klik opnieuw", y = 50, font_size = 30, transparency=0)
 foto_slot1 = None
 foto_slot2 = None
 foto_slot3 = None
+
+risico_knop = play.new_image("risicoknop.png", size=25, x=-200, y=-50, transparency=0)
+
+@play.repeat_forever
+async def risico():
+    if risico_knop.transparency == 100:
+        risico_knop.x = random.randint(-414,414)
+        risico_knop.y = random.randint(-314,314)
+        await play.timer(seconds = 1)
+        risico_knop.transparency = 0
+        risico_knop.x = random.randint(-414,414)
+        risico_knop.y = random.randint(-314,314)
+        await play.timer(seconds = 1)
+        risico_knop.transparency = 100
+
+@risico_knop.when_clicked
+def druk_op_knop():
+    global money
+    global money_button
+    if random.randint(1, 2) == 1:
+        money *= 2
+    else:
+        money //= 2
+    money_button.hide()
+    money_button = play.new_text(f"{money}", color='black', font_size=25, x=280, y=240, transparency=100)
+    money_button.show()
+    risico_knop.hide()
  
 def roulette_show():
     for i in roulette_knoppen:
@@ -222,8 +249,10 @@ def roulette_show():
 def roulette_hide():
     for i in roulette_knoppen:
         i.transparency = 0
+
 @start_box.when_clicked
 def start_function():
+    risico_knop.transparency = 100
     start_button.hide()
     start_box.hide()
     achtergrond.transparency = 100
@@ -243,6 +272,7 @@ def start_function():
  
 @reset_button.when_clicked
 def reset_function():
+    risico_knop.transparency = 0
     start_button.show()
     start_box.show()
     reset_button.hide()
@@ -287,6 +317,7 @@ def loop_naarvoren_function():
  
 @shop.when_clicked
 def shop_open_function():
+    risico_knop.transparency = 0
     upgrade_1.transparency = 100
     shop_text_geld_upgrade1.show()
     upgrade_2.transparency = 100
@@ -320,6 +351,7 @@ def shop_open_function():
  
 @pijltje_terug.when_clicked
 def shop_sluiten_function():
+    risico_knop.transparency = 100
     achtergrond.transparency = 100
     player.transparency = 100
     reset_button.transparency =100
