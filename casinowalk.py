@@ -68,7 +68,7 @@ doorgaan_roul.hide()
 doorgaan_slot = play.new_text('DOORGAAN ->', y = -200)
 doorgaan_slot.hide()
 
-money = 2000
+money = 3000
 money_button = play.new_text (f'{money}', color = 'black', font_size = 25, x = 270, y = 240, transparency=0)
 inzet = 0
 
@@ -1031,105 +1031,164 @@ def coinflip_function():
 
     
 @upgrade_1.when_clicked
-def buy_upgrade1():
+async def buy_upgrade1():
     if upgrade_1.transparency == 100:  
         global gekocht_1
         if not gekocht_1:
-            koop_character(20, "zwerverboi.png")
-            gekocht_1 = True
-            player.image = "zwerverboi.png"
+            await koop_character(20)
+            if gelukt == True:
+                gekocht_1 = True
+                player.image = "zwerverboi.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "zwerverboi.png"
 
 
 @upgrade_2.when_clicked
-def buy_upgrade2():
+async def buy_upgrade2():
     if upgrade_2.transparency == 100:
         global gekocht_2
         if not gekocht_2:
-            koop_character(80, "niet meer straatarm.png")
-            gekocht_2 = True
+            await koop_character(80)
+            if gelukt == True:
+                gekocht_2 = True
+                player.image = "niet meer straatarm.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "niet meer straatarm.png"
 
 @upgrade_3.when_clicked
-def buy_upgrade3():
+async def buy_upgrade3():
     if upgrade_3.transparency == 100:
         global gekocht_3
         if not gekocht_3:
-            koop_character(150, "soort van rijk.png")
-            gekocht_3 = True
+            await koop_character(150)
+            if gelukt == True:
+                gekocht_3 = True
+                player.image = "soort van rijk.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "soort van rijk.png"
 
 @upgrade_4.when_clicked
-def buy_upgrade4():
+async def buy_upgrade4():
     if upgrade_4.transparency == 100:
         global gekocht_4
         if not gekocht_4:
-            koop_character(250, "best rijk.png")
-            gekocht_4 = True
+            await koop_character(250)
+            if gelukt == True:
+                gekocht_4 = True
+                player.image = "best rijk.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "best rijk.png"
 
 
 @upgrade_5.when_clicked
-def buy_upgrade5():
+async def buy_upgrade5():
     if upgrade_5.transparency == 100:
         global gekocht_5
         if not gekocht_5:
-            koop_character(450, "koning5.png")
-            gekocht_5 = True
+            await koop_character(450)
+            if gelukt == True:
+                gekocht_5 = True
+                player.image = "koning5.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "koning5.png"
 
 
 @upgrade_6.when_clicked
-def buy_upgrade6():
+async def buy_upgrade6():
     if upgrade_6.transparency == 100:
         global gekocht_6
         if not gekocht_6:
-            koop_character(650, "koning zes.png")
-            gekocht_6 = True
+            await koop_character(650)
+            if gelukt == True:
+                gekocht_6 = True
+                player.image = "koning zes.png"
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "koning zes.png"
 
 @upgrade_7.when_clicked
-def buy_upgrade7():
+async def buy_upgrade7():
     if upgrade_7.transparency == 100:
         global gekocht_7
         if not gekocht_7:
-            koop_character(1000, "7.png")
-            gekocht_7 = True
+            await koop_character(1000)
+            if gelukt == True:
+                gekocht_7 = True
+                player.image = "7.png"
+                player.angle  = 180
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "7.png"
             player.angle  = 180
 
-
+# nieuwe_skin
 @upgrade_8.when_clicked
-def buy_upgrade8():
+async def buy_upgrade8():
     if upgrade_8.transparency == 100:
         global gekocht_8
         if not gekocht_8:
-            koop_character(2000, "8.png")
-            gekocht_8 = True
+            await koop_character(2000)
+            if gelukt == True:
+                gekocht_8 = True
+                player.image = "8.png"
+                player.transparency=100
+                player.angle = 180
+                print(player.image)
+            else:
+                niet_genoeg.transparency =100
+                await play.timer(seconds = 2)
+                niet_genoeg.transparency =0
         else:
             player.image = "8.png"
             player.angle = 180
             
 #async geprobeerd maar lukt nog niet
-def koop_character(prijs, nieuwe_skin):
+async def koop_character(prijs):
     global money
+    global gelukt
     if money > prijs:
         money -= prijs
         money_button.text = f"{money}"
-        player.image = nieuwe_skin
-        if money <= 0:
-            game_over.transparency = 100
+        gelukt = True
+        # player.image = nieuwe_skin
     else:
-        niet_genoeg_geld = play.new_text("Niet genoeg geld!", y=150, font_size=30)
-        # await play.timer(seconds = 2)
-        # niet_genoeg_geld.hide()
+        niet_genoeg.transparency=100
+        await play.timer(seconds = 2)
+        niet_genoeg.transparency=0
+        gelukt = False
 
 @play.repeat_forever
 def stop_presstostart_function():
