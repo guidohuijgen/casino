@@ -228,7 +228,7 @@ uitleg_text8 = play.new_text("Maar de kans is groter dat je verliest dan dat je 
 
 chest = play.new_image("chest closed.png", size=40, x=250, y=-200, transparency=0)
 chest_open = play.new_image("chest open.png", size = 40, x= 250,y= -200, transparency=0 )
-kost_20 = uitleg_text7 = play.new_text("Deze kist kost 20,-",color = 'black', y = -100, font_size = 25, transparency=0)
+kost_20 = play.new_text("Deze kist kost 20,-",color = 'black', y = -150,x =250, font_size = 25, transparency=0)
 
 def begintekst():
     uitleg_text1.transparency = 0
