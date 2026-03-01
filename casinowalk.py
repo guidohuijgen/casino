@@ -646,7 +646,6 @@ def roulette_function():
         in_game = True
         inzet_function()
         doorgaan_roul.show()
-
 def roullete_when_clicked(getal, nummer):
     @getal.when_clicked
     def getallen():
@@ -868,7 +867,7 @@ def winst_berekening_function():
     money_button.hide()
     money_button = play.new_text(f"{money}",color = 'black', font_size = 25, x = 280, y = 240, transparency=100)
     money_button.show()
-async def skin_kopen()
+
 @upgrade_1.when_clicked
 async def buy_upgrade1():
     if upgrade_1.transparency == 100:  
@@ -949,7 +948,6 @@ async def buy_upgrade4():
             player.hide()
             player = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
             player.show()
- 
 @upgrade_5.when_clicked
 async def buy_upgrade5():
     if upgrade_5.transparency == 100:
@@ -969,8 +967,7 @@ async def buy_upgrade5():
         else:
             player.hide()
             player= play.new_image("koning5.png", size = 12, transparency= 0)
-            player.show()
- 
+            player.show() 
 @upgrade_6.when_clicked
 async def buy_upgrade6():
     if upgrade_6.transparency == 100:
@@ -991,7 +988,6 @@ async def buy_upgrade6():
             player.hide()
             player=play.new_image("koning zes.png", size = 30, transparency= 0)
             player.show()
- 
 @upgrade_7.when_clicked
 async def buy_upgrade7():
     if upgrade_7.transparency == 100:
@@ -1014,8 +1010,6 @@ async def buy_upgrade7():
             player= play.new_image( "7.png",transparency= 0, size = 20)
             player.show()
             player.angle  = 180
- 
-# nieuwe_skin
 @upgrade_8.when_clicked
 async def buy_upgrade8():
     if upgrade_8.transparency == 100:
@@ -1038,8 +1032,6 @@ async def buy_upgrade8():
             player=play.new_image("8.png", size = 20, transparency= 0)
             player.show()
             player.angle = 180
-           
-#async geprobeerd maar lukt nog niet
 async def koop_character(prijs):
     global money
     global gelukt
@@ -1064,6 +1056,3 @@ def stop_presstostart_function():
         press_g_start_slotmachine.hide()
  
 play.start_program()
- 
- 
- 
