@@ -68,8 +68,8 @@ doorgaan_roul.hide()
 doorgaan_slot = play.new_text('DOORGAAN ->', y = -200)
 doorgaan_slot.hide()
 
-money = 3000
-money_button = play.new_text (f'{money}', color = 'black', font_size = 25, x = 270, y = 240, transparency=0)
+money = 5000
+money_button = play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
 inzet = 0
 
 game_over = play.new_text("JE BENT BLUT...", color = "red",font_size = 60, transparency=0)
@@ -158,9 +158,9 @@ upgrade_1 = play.new_image("zwerverboi.png", size = 32, transparency = 0, x = -2
 upgrade_2 = play.new_image("niet meer straatarm.png", size = 10, transparency = 0, x = -75, y = 30)
 upgrade_3 = play.new_image("soort van rijk.png", size = 33, transparency = 0, x = 75, y = 30)
 upgrade_4 = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
-upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -120)
-upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -120)
-upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -112, angle = 180)
+upgrade_5 = play.new_image("koning5.png", size = 12, transparency= 0, x = -225, y = -110)
+upgrade_6 = play.new_image("koning zes.png", size = 30, transparency= 0, x = -75, y = -105)
+upgrade_7 = play.new_image("7.png", size = 13, transparency = 0, x = 75, y = -105, angle = 180)
 upgrade_8 = play.new_image("8.png", size = 13, transparency= 0, x =225, y = -98, angle = 180)
 
 kiezen = play.new_text("Klik rood of zwart om te kiezen of kies een nummer", y = 70, transparency=0, font_size = 30)
@@ -481,9 +481,10 @@ def inzet_function():
             inzet += 5
             check_genoeg_geld(5)
             if money> 5:
+                global money_button
                 money-= 5
                 money_button.hide()
-                money_button.text = f'{money}'
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
                 money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
@@ -507,8 +508,11 @@ def inzet_function():
             inzet += 10
             check_genoeg_geld(10)
             if money> 10:
+                global money_button
                 money-= 10
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -531,8 +535,11 @@ def inzet_function():
             inzet += 20
             check_genoeg_geld(20)
             if money> 20:
+                global money_button
                 money-= 20
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -555,8 +562,11 @@ def inzet_function():
             inzet += 50
             check_genoeg_geld(50)
             if money> 50:
+                global money_button
                 money-= 50
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -580,8 +590,11 @@ def inzet_function():
             inzet += 100
             check_genoeg_geld(100)
             if money> 100:
+                global money_button
                 money-= 100
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -604,8 +617,11 @@ def inzet_function():
             inzet += 500
             check_genoeg_geld(500)
             if money> 500:
+                global money_button
                 money-= 500
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -628,8 +644,11 @@ def inzet_function():
             inzet += 1000
             check_genoeg_geld(1000)
             if money> 1000:
+                global money_button
                 money-= 1000
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -652,8 +671,11 @@ def inzet_function():
             inzet += 2000
             check_genoeg_geld(2000)
             if money> 2000:
+                global money_button
                 money-= 2000
-                money_button.text = (f'{money}')
+                money_button.hide()
+                money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=0)
+                money_button.show()
                 money_button.transparency = 100
                 kies_inzet.transparency = 0
                 vijf_inzet.transparency =0
@@ -1034,124 +1056,149 @@ def coinflip_function():
 async def buy_upgrade1():
     if upgrade_1.transparency == 100:  
         global gekocht_1
+        global player
         if not gekocht_1:
             await koop_character(20)
             if gelukt == True:
                 gekocht_1 = True
-                player.image = "zwerverboi.png"
-                print(player.image)
+                player.hide()
+                player= play.new_image("zwerverboi.png", size = 32, transparency = 0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "zwerverboi.png"
-
+            player.hide()
+            player =play.new_image("zwerverboi.png", size = 32, transparency = 0)
+            player.show()
 
 @upgrade_2.when_clicked
 async def buy_upgrade2():
     if upgrade_2.transparency == 100:
         global gekocht_2
+        global player
         if not gekocht_2:
             await koop_character(80)
             if gelukt == True:
                 gekocht_2 = True
-                player.image = "niet meer straatarm.png"
-                print(player.image)
+                player.hide()
+                player= play.new_image("niet meer straatarm.png", size = 10, transparency = 0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "niet meer straatarm.png"
+            player.hide()
+            player= play.new_image("niet meer straatarm.png", size = 10, transparency = 0)
+            player.show()
 
 @upgrade_3.when_clicked
 async def buy_upgrade3():
     if upgrade_3.transparency == 100:
         global gekocht_3
+        global player
         if not gekocht_3:
             await koop_character(150)
             if gelukt == True:
                 gekocht_3 = True
-                player.image = "soort van rijk.png"
-                print(player.image)
+                player.hide()
+                player= play.new_image("soort van rijk.png", size = 33, transparency = 0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "soort van rijk.png"
+            player.hide()
+            player= play.new_image("soort van rijk.png", size = 33, transparency = 0)
+            player.show()
 
 @upgrade_4.when_clicked
 async def buy_upgrade4():
     if upgrade_4.transparency == 100:
         global gekocht_4
+        global player
         if not gekocht_4:
             await koop_character(250)
             if gelukt == True:
                 gekocht_4 = True
-                player.image = "best rijk.png"
-                print(player.image)
+                player.hide()
+                player= play.new_image("best rijk.png", size = 30, transparency= 0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "best rijk.png"
-
+            player.hide()
+            player = play.new_image("best rijk.png", size = 30, transparency= 0, x = 225, y = 30)
+            player.show()
 
 @upgrade_5.when_clicked
 async def buy_upgrade5():
     if upgrade_5.transparency == 100:
         global gekocht_5
+        global player
         if not gekocht_5:
             await koop_character(450)
             if gelukt == True:
                 gekocht_5 = True
-                player.image = "koning5.png"
-                print(player.image)
+                player.hide()
+                player= play.new_image("koning5.png", size = 12, transparency= 0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "koning5.png"
-
+            player.hide()
+            player= play.new_image("koning5.png", size = 12, transparency= 0)
+            player.show()
 
 @upgrade_6.when_clicked
 async def buy_upgrade6():
     if upgrade_6.transparency == 100:
         global gekocht_6
+        global player
         if not gekocht_6:
             await koop_character(650)
             if gelukt == True:
                 gekocht_6 = True
-                player.image = "koning zes.png"
-                print(player.image)
+                player.hide()
+                player=play.new_image("koning zes.png", size = 40, transparency=0)
+                player.show()
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "koning zes.png"
+            player.hide()
+            player=play.new_image("koning zes.png", size = 30, transparency= 0)
+            player.show()
 
 @upgrade_7.when_clicked
 async def buy_upgrade7():
     if upgrade_7.transparency == 100:
         global gekocht_7
+        global player
         if not gekocht_7:
             await koop_character(1000)
             if gelukt == True:
                 gekocht_7 = True
-                player.image = "7.png"
+                player.hide()
+                player = play.new_image("7.png", size = 20, transparency= 0)
+                player.show()
                 player.angle  = 180
-                print(player.image)
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "7.png"
+            player.hide()
+            player= play.new_image( "7.png",transparency= 0, size = 20)
+            player.show()
             player.angle  = 180
 
 # nieuwe_skin
@@ -1159,31 +1206,36 @@ async def buy_upgrade7():
 async def buy_upgrade8():
     if upgrade_8.transparency == 100:
         global gekocht_8
+        global player
         if not gekocht_8:
             await koop_character(2000)
             if gelukt == True:
                 gekocht_8 = True
-                player.image = "8.png"
-                player.transparency=100
+                player.hide()
+                player = play.new_image( "8.png", size =20, transparency= 0)
+                player.show()
                 player.angle = 180
-                print(player.image)
             else:
                 niet_genoeg.transparency =100
                 await play.timer(seconds = 2)
                 niet_genoeg.transparency =0
         else:
-            player.image = "8.png"
+            player.hide()
+            player=play.new_image("8.png", size = 20, transparency= 0)
+            player.show()
             player.angle = 180
             
 #async geprobeerd maar lukt nog niet
 async def koop_character(prijs):
     global money
     global gelukt
+    global money_button
     if money > prijs:
         money -= prijs
-        money_button.text = f"{money}"
+        money_button.hide()
+        money_button = play.new_text (f"{money}", color = 'black', font_size = 25, x = 280, y = 240, transparency=100)
+        money_button.show()
         gelukt = True
-        # player.image = nieuwe_skin
     else:
         niet_genoeg.transparency=100
         await play.timer(seconds = 2)
