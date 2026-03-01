@@ -216,6 +216,50 @@ foto_slot1 = None
 foto_slot2 = None
 foto_slot3 = None
 
+uitleg_text1 = play.new_text('Je bent een hopeloze zwerver die net een briefje', color = 'black', y = 250, font_size = 25)
+uitleg_text2 = play.new_text('van 20 euro op straat heeft gevonden.', color = 'black', y = 220, font_size = 25)
+uitleg_text3 = play.new_text('De casino om de hoek is je laatste hoop om'  , color = 'black', y = 190, font_size = 25)
+uitleg_text4 = play.new_text('weer op het goede pad te komen!', color = 'black', y = 160, font_size = 25)
+uitleg_tex5 = play.new_text('Je loopt naar binnen om je geluk te testen. Wees voorzichtig,' , color = 'black', y = 130, font_size = 25)
+uitleg_text6 = play.new_text('want als je geen geld meer hebt is het game over.', color = 'black', y = 100, font_size = 25)
+uitleg_text7 = play.new_text("Er zijn ook hulpmiddelen zoals de risicoknop en de kist.",color = 'black', y = -100, font_size = 25)
+uitleg_text8 = play.new_text("Maar de kans is groter dat je verliest dan dat je wint dus kijk uit!",color = 'black', y = -130, font_size = 25)
+
+
+chest = play.new_image("chest closed.png", size=40, x=250, y=-200, transparency=0)
+chest_open = play.new_image("chest open.png", size = 40, x= 250,y= -200, transparency=0 )
+kost_20 = uitleg_text7 = play.new_text("Deze kist kost 20,-",color = 'black', y = -100, font_size = 25, transparency=0)
+
+def begintekst():
+    uitleg_text1.transparency = 0
+    uitleg_text2.transparency = 0
+    uitleg_text3.transparency = 0
+    uitleg_text4.transparency = 0
+    uitleg_tex5.transparency = 0
+    uitleg_text6.transparency = 0
+    uitleg_text7.transparency = 0
+    uitleg_text8.transparency = 0
+ 
+ 
+@chest.when_clicked
+async def open_kist():
+    global money
+    global money_button
+    chest.hide()
+    chest_open.transparency = 100
+    if money >= 20:
+        money -= 20  
+        if random.randint(1, 10) <= 3:
+            money += 150
+        money_button.hide()
+        money_button = play.new_text(f"{money}", color ='black', font_size =25, x= 280, y = 240, transparency = 100)
+        money_button.show()
+        chest.x = random.randint(-400, 400)
+        chest.y = random.randint(-300, 300)
+        await play.timer(seconds= 2)
+        chest_open.hide()
+        kost_20.hide()
+
 risico_knop = play.new_image("risicoknop.png", size=25, x=-200, y=-50, transparency=0)
 
 @play.repeat_forever
@@ -229,7 +273,6 @@ async def risico():
         risico_knop.y = random.randint(-314,314)
         await play.timer(seconds = 1)
         risico_knop.transparency = 100
-
 @risico_knop.when_clicked
 def druk_op_knop():
     global money
@@ -239,7 +282,7 @@ def druk_op_knop():
     else:
         money //= 2
     money_button.hide()
-    money_button = play.new_text(f"{money}", color='black', font_size=25, x=280, y=240, transparency=100)
+    money_button = play.new_text(f"{money}", color='black', font_size= 25, x =280, y= 240, transparency= 100)
     money_button.show()
     risico_knop.hide()
  
@@ -252,6 +295,9 @@ def roulette_hide():
 
 @start_box.when_clicked
 def start_function():
+    begintekst()
+    kost_20.transparency = 100
+    chest.transparency = 100
     risico_knop.transparency = 100
     start_button.hide()
     start_box.hide()
@@ -272,6 +318,8 @@ def start_function():
  
 @reset_button.when_clicked
 def reset_function():
+    kost_20.transparency = 0
+    chest.transparency = 0
     risico_knop.transparency = 0
     start_button.show()
     start_box.show()
@@ -288,6 +336,7 @@ def reset_function():
     roulette.transparency = 0
     coinflip.transparency = 0
     game_over.transparency = 0
+    begintekst()
    
 @play.when_key_pressed("w","up")
 def vooruit_function():
@@ -317,6 +366,8 @@ def loop_naarvoren_function():
  
 @shop.when_clicked
 def shop_open_function():
+    kost_20.transparency = 0
+    chest.transparency= 0
     risico_knop.transparency = 0
     upgrade_1.transparency = 100
     shop_text_geld_upgrade1.show()
@@ -351,6 +402,8 @@ def shop_open_function():
  
 @pijltje_terug.when_clicked
 def shop_sluiten_function():
+    kost_20.transparency = 0
+    chest.transparency = 100
     risico_knop.transparency = 100
     achtergrond.transparency = 100
     player.transparency = 100
