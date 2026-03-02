@@ -836,6 +836,11 @@ def resultaat_roul_kleur(keuze_kleur):
     else:
         loss.show()
         win.hide()
+    rood.transparency = 0
+    of.transparency = 0
+    black.transparency = 0
+    kies.transparency = 0
+    kiezen.transparency = 0
     roulette_hide()
     doorgaan.show()
 @doorgaan.when_clicked
