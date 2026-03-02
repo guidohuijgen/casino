@@ -534,9 +534,9 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
     elif slot_2[:3] == slot_3[:3]:        
         partial_win.show()
         doorgaan_rr.show()
-        if slot_1[:3] == "zev":
+        if slot_2[:3] == "zev":
             slotwinst_function(100)
-        elif slot_1[:3] == "bar":
+        elif slot_2[:3] == "bar":
             slotwinst_function(50)
         elif slot_2[:3] == "har" or slot_2[:3] == "bel":
             slotwinst_function(25)
