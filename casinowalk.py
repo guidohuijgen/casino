@@ -534,7 +534,7 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
     elif slot_2[:3] == slot_3[:3]:        
         partial_win.show()
         doorgaan_rr.show()
-        if slot_2[:3] == "zev":
+        if slot_2[:3] == "zev": 
             slotwinst_function(100)
         elif slot_2[:3] == "bar":
             slotwinst_function(50)
@@ -682,6 +682,7 @@ def inzet_vijfhonderd_function():
         global inzet
         inzet += 500
         check_genoeg_geld(500)
+        min_geld_function(500)
 @duizend_inzet.when_clicked
 def inzet_duizend_function():
     if duizend_inzet.transparency == 100:
