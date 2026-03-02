@@ -538,7 +538,7 @@ def resultaat_slot_function(slot_1,slot_2,slot_3):
             slotwinst_function(100)
         elif slot_1[:3] == "bar":
             slotwinst_function(50)
-        elif slot_1[:3] == "har" or slot_1[:3] == "bel":
+        elif slot_2[:3] == "har" or slot_2[:3] == "bel":
             slotwinst_function(25)
         else:
             slotwinst_function(10)
