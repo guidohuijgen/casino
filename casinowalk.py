@@ -1,7 +1,7 @@
 #casinowalk
 import play
 import random
- 
+
 achtergrond = play.new_box(color = "dark red", width = 800, height = 800, transparency=0)
  
 beginscherm = play.new_box (color = "light blue", width= 800, height = 1000)
@@ -18,9 +18,9 @@ bar_slot3 = play.new_image("bar.png", size = 30, transparency= 0)
 bel_slot1 = play.new_image("bel.png", size  =30, transparency= 0 )
 bel_slot2 = play.new_image("bel.png", size  =30, transparency= 0 )
 bel_slot3 = play.new_image("bel.png", size  =30, transparency= 0 )
-druif_slot1  = play.new_image("druif.png", size = 30, transparency=0)
-druif_slot2  = play.new_image("druif.png", size = 30, transparency=0)
-druif_slot3  = play.new_image("druif.png", size = 30, transparency=0)
+druif_slot1 = play.new_image("druif.png", size = 30, transparency=0)
+druif_slot2 = play.new_image("druif.png", size = 30, transparency=0)
+druif_slot3 = play.new_image("druif.png", size = 30, transparency=0)
 hart_slot1 = play.new_image("hart.png", size = 30,transparency=0)
 hart_slot2 = play.new_image("hart.png", size = 30,transparency=0)
 hart_slot3 = play.new_image("hart.png", size = 30,transparency=0)
@@ -179,6 +179,9 @@ kop = play.new_text("kop", color="red", x=-20, transparency= 0)
 of_tekst = play.new_text("of", color="white", x=50, transparency=0)
 munt = play.new_text("munt", color="green", x=150, transparency=0)
  
+risico_knop = play.new_image("risicoknop.png", size=25, x=0, y=-200, transparency=0)
+risico_uitleg = play.new_text("Als je op de risico knop klikt kan je jouw geld verdubbelen of halveren, dus wees voorzichtig!", transparency= 0, font_size = 15, x= 0, y = -50)
+
 winst = 0
 win = play.new_text("Je hebt gewonnen!", font_size=25)
 win.hide()
@@ -240,7 +243,8 @@ def begintekst():
     uitleg_text7.transparency = 0
     uitleg_text8.transparency = 0
  
- 
+doorgaan_spend = play.new_text("Als je doorgaat kan je al je geld verliezen!", font_size = 25, y =200, transparency=0)
+nee_spend = play.new_text("Nee, ik wil niet verder", font_size = 25, y= 100,transparency=0)
 @chest.when_clicked
 async def open_kist():
     global money
@@ -260,19 +264,12 @@ async def open_kist():
         chest_open.hide()
         kost_20.hide()
 
-risico_knop = play.new_image("risicoknop.png", size=25, x=-200, y=-50, transparency=0)
 
-@play.repeat_forever
-async def risico():
-    if risico_knop.transparency == 100:
-        risico_knop.x = random.randint(-414,414)
-        risico_knop.y = random.randint(-314,314)
-        await play.timer(seconds = 1)
-        risico_knop.transparency = 0
-        risico_knop.x = random.randint(-414,414)
-        risico_knop.y = random.randint(-314,314)
-        await play.timer(seconds = 1)
-        risico_knop.transparency = 100
+@start_button.when_clicked
+async def risico_knop_weg():
+    await play.timer(seconds = 6)
+    risico_uitleg.hide()
+
 @risico_knop.when_clicked
 def druk_op_knop():
     global money
@@ -284,8 +281,8 @@ def druk_op_knop():
     money_button.hide()
     money_button = play.new_text(f"{money}", color='black', font_size= 25, x =280, y= 240, transparency= 100)
     money_button.show()
-    risico_knop.hide()
- 
+    
+
 def roulette_show():
     for i in roulette_knoppen:
         i.transparency = 100
@@ -296,6 +293,7 @@ def roulette_hide():
 @start_box.when_clicked
 def start_function():
     begintekst()
+    risico_uitleg.transparency = 100
     kost_20.transparency = 100
     chest.transparency = 100
     risico_knop.transparency = 100
@@ -318,6 +316,7 @@ def start_function():
  
 @reset_button.when_clicked
 def reset_function():
+    risico_uitleg.transparency = 0
     kost_20.transparency = 0
     chest.transparency = 0
     risico_knop.transparency = 0
@@ -366,6 +365,7 @@ def loop_naarvoren_function():
  
 @shop.when_clicked
 def shop_open_function():
+    risico_uitleg.transparency = 0
     kost_20.transparency = 0
     chest.transparency= 0
     risico_knop.transparency = 0
@@ -402,6 +402,7 @@ def shop_open_function():
  
 @pijltje_terug.when_clicked
 def shop_sluiten_function():
+    risico_uitleg.transparency = 100
     kost_20.transparency = 0
     chest.transparency = 100
     risico_knop.transparency = 100
@@ -631,84 +632,110 @@ def inzet_function():
     loss.hide()
 @vijf_inzet.when_clicked
 def inzet_vijf_function():
-    if vijf_inzet.transparency ==100:
+    global inzet_ingevoerd
+    if vijf_inzet.transparency ==100 and inzet_ingevoerd == False:
         global money
         global inzet
-        global inzet_ingevoerd
         inzet += 5
         check_genoeg_geld(5)
         min_geld_function(5)
 @tien_inzet.when_clicked
 def inzet_tien_function():
-    if tien_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if tien_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 10
         check_genoeg_geld(10)
         min_geld_function(10)
 @twintig_inzet.when_clicked
 def inzet_twintig_function():
-    if twintig_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if twintig_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 20
         check_genoeg_geld(20)
         min_geld_function(20)
 @vijftig_inzet.when_clicked
 def inzet_vijftig_function():
-    if vijftig_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if vijftig_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 50
         check_genoeg_geld(50)
         min_geld_function(50)
 @honderd_inzet.when_clicked
 def inzet_honderd_function():
-    if honderd_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if honderd_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 100
         check_genoeg_geld(100)
         min_geld_function(100)
 @vijfhonderd_inzet.when_clicked
 def inzet_vijfhonderd_function():
-    if vijfhonderd_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if vijfhonderd_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 500
         check_genoeg_geld(500)
         min_geld_function(500)
 @duizend_inzet.when_clicked
 def inzet_duizend_function():
-    if duizend_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if duizend_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 1000
         check_genoeg_geld(1000)
         min_geld_function(1000)
 @tweeduizend_inzet.when_clicked
 def inzet_tweeduizend_function():
-    if tweeduizend_inzet.transparency == 100:
+    global inzet_ingevoerd
+    if tweeduizend_inzet.transparency == 100 and inzet_ingevoerd == False:
         global money
-        global inzet_ingevoerd
         global inzet
         inzet += 2000
         check_genoeg_geld(2000)
         min_geld_function(2000)
 def check_genoeg_geld(inzet):
-    if money<inzet:
-        niet_genoeg.transparency = 100
+    global money
+    if money==inzet:
+        doorgaan_spend.transparency = 100
+        nee_spend.transparency = 100
         opnieuw.transparency = 100
     else:
         opnieuw.transparency = 0
-        niet_genoeg.transparency = 0
- 
+
+@doorgaan_spend.when_clicked
+def doorgaanmetspenden():
+    global inzet
+    if doorgaan_spend.transparency==100:
+        doorgaan_spend.transparency = 0
+        nee_spend.transparency = 0
+        min_geld_function(inzet)
+
+@nee_spend.when_clicked
+def opnieuw_inzet_kiezen():
+    global inzet
+    global inzet_ingevoerd
+    global money_button
+    global money
+    inzet_ingevoerd = False
+    money+= inzet
+    money_button.hide()
+    money_button= play.new_text (f'{money}', color = 'black', font_size = 25, x = 280, y = 240, transparency=100)
+    money_button.show()
+    opnieuw.transparency = 100
+    inzet = 0
+    doorgaan_spend.transparency = 0
+    nee_spend.transparency = 0
+    inzet_function()
+
 @play.repeat_forever
 async def game_over_function():
     global in_game
@@ -1145,5 +1172,5 @@ def stop_presstostart_function():
         press_f_start_coinflip.hide()
         press_e_start_roulette.hide()
         press_g_start_slotmachine.hide()
- 
+
 play.start_program()
